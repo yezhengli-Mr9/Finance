@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}HW1,2}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Extra}{10}{subsection.1.1}
+\contentsline {section}{\numberline {2}HW3}{11}{section.2}
+\contentsline {section}{\numberline {3}HW4}{16}{section.3}
+\contentsline {section}{\numberline {4}HW5}{20}{section.4}
+\contentsline {section}{\numberline {5}HW6}{26}{section.5}
+\contentsline {section}{\numberline {6}HW7}{29}{section.6}

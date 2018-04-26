@@ -1,0 +1,1650 @@
+\documentclass{article}
+\usepackage{extarrows}
+%\usepackage{ntheorem}
+\usepackage{amssymb,amsmath,amsthm}%,amsthm
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{enumerate}
+\usepackage{mdframed}
+%\usepackage{listings}
+%% \usepackage[round]{natbib}
+%\usepackage{mdframed}
+\usepackage{hyperref} 
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=blue,        % color of file links
+	urlcolor=blue          % color of external links
+}
+%%---------------
+
+
+
+%---------------
+%\theoremstyle{nonumberplain}
+\newtheorem*{ans}{Answer}
+%\theoremstyle{numberplain}
+\newtheorem{theorem}{\bf Theorem}
+\newtheorem*{prob}{{\bf Problem}}
+\newtheorem*{ex}{{\bf Example}}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{claim}{Claim}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{\bf Proposition}
+\newtheorem{thm}{\bf Theorem}
+
+
+\newtheorem{rem}{\bf Remark}
+%\newtheorem{proof}{\bf Proof}
+
+\makeatletter
+\newenvironment{subenvir}[1]{%
+	\def\subtheoremcounter{#1}%
+	\refstepcounter{#1}%
+	\protected@edef\theparentnumber{\csname the#1\endcsname}%
+	\setcounter{parentnumber}{\value{#1}}%
+	\setcounter{#1}{0}%
+	\expandafter\def\csname the#1\endcsname{\theparentnumber.\Alph{#1}}%
+	\ignorespaces
+}{%
+	\setcounter{\subtheoremcounter}{\value{parentnumber}}%
+	\ignorespacesafterend
+}
+\makeatother
+\newcounter{parentnumber}
+
+
+
+
+\newcommand {\Reals}  {{\rm I \! R}}
+\newcommand {\Complex}  {{\rm I \! C}}
+\newcommand {\Naturals}  {{\rm I \! N}}
+\newcommand {\Rationals}  {{\rm I \! Q}}
+\newcommand {\Integers}  {{\rm I \! Z}}
+
+
+\newcommand{\tY}{{\tilde{Y}}}
+
+\newcommand{\1}{{\bf 1}}
+
+\newcommand{\bbA}{{\mathbb{A}}}
+\newcommand{\bbC}{{\mathbb{C}}}
+\newcommand{\bbD}{{\mathbb{D}}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+\newcommand{\srhbeta}{{\hthe^{SR}}}
+\newcommand{\srhsig}{{\hat{\sigma}^{SR}}}
+\newcommand{\hSig}{{\hat{\Sigma}}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\Ra}{{\mathcal{R}}}
+\newcommand{\Null}{{\mathcal{N}}}
+\newcommand{\Range}{{\mathcal{R}}}
+
+\newcommand{\0}{{\mathbf{0}}}
+\renewcommand{\a}{{\mathbf{a}}}
+\renewcommand{\b}{{\mathbf{b}}}
+\renewcommand{\c}{{\mathbf{c}}}
+\newcommand{\e}{{\mathbf{e}}}
+\newcommand{\f}{{\mathbf{f}}}
+\newcommand{\h}{{\mathbf{h}}}
+\newcommand{\p}{{\mathbf{p}}}
+\newcommand{\s}{{\mathbf{s}}}
+\renewcommand{\t}{{\mathbf{t}}}
+\renewcommand{\u}{{\mathbf{u}}}
+\renewcommand{\v}{{\mathbf{v}}}
+\newcommand{\w}{{\mathbf{w}}}
+\newcommand{\x}{{\mathbf{x}}}
+\newcommand{\y}{{\mathbf{y}}}
+\newcommand{\yhat}{{\mathbf{\hat{y}}}}
+\newcommand{\z}{{\mathbf{z}}}
+\newcommand{\A}{{\mathbf{A}}}
+\newcommand{\B}{{\mathbf{B}}}
+%\newcommand{\C}{{\mathbf{C}}}
+\newcommand{\D}{{\mathbf{D}}}
+\newcommand{\F}{{\mathbf{F}}}
+\renewcommand{\H}{{\mathbf{H}}}
+\newcommand{\I}{{\mathbf{I}}}
+\newcommand{\M}{{\mathbf{M}}}
+
+\newcommand{\N}{{\mathbf{N}}}
+
+\newcommand{\E}{{\mathbf{E}}}
+\renewcommand{\P}{{\mathbf{P}}}
+\newcommand{\Q}{{\mathbf{Q}}}
+\newcommand{\R}{{\mathbf{R}}}
+\renewcommand{\S}{{\mathbf{S}}}
+\newcommand{\T}{{\mathbf{T}}}
+\newcommand{\U}{{\mathbf{U}}}
+\newcommand{\V}{{\rm V}}
+\newcommand{\Var}{{\rm Var}}
+\newcommand{\W}{{\mathbf{W}}}
+\newcommand{\X}{{\mathbf{X}}}
+\newcommand{\Y}{{\mathbf{Y}}}
+\newcommand{\Z}{{\mathbf{Z}}}
+\newcommand{\hthe} {{\hat{\theta}}}   % could be {{\hthe}}
+
+\newcommand{\tc}{{\tilde{c}}}
+\newcommand{\tX}{{\mathbf{\tilde{X}}}}
+\newcommand{\tu}{{\mathbf{\tilde{u}}}}
+\newcommand{\tv}{{\mathbf{\tilde{v}}}}
+
+\newcommand{\bbX}{{\mathbb{X}}}
+
+\newcommand{\cN}{{\cal N}}
+\newcommand{\cO}{{\cal O}}
+\newcommand{\cP}{{\cal P}}
+\newcommand{\cR}{{\cal R}}
+
+
+\newcommand{\bOmega}{\boldsymbol{\Omega}}
+\newcommand{\bDelta}{\boldsymbol{\Delta}}
+\newcommand{\bLambda}{\boldsymbol{\Lambda}}
+\newcommand{\beps}{\boldsymbol{\epsilon}}
+\newcommand{\bphi}{\boldsymbol{\phi}}
+\newcommand{\bpsi}{\boldsymbol{\psi}}
+
+\newcommand{\mean}{{\rm mean}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\var}{{\rm var}}
+\newcommand{\tr}{{\rm tr}}
+\newcommand{\Prob}{{\rm Prob}}
+\newcommand{\CV}{\operatorname{\rm CV}}
+\newcommand{\GCV}{\operatorname{\rm GCV}}
+\newcommand{\diag}{{\rm diag}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\pnorm}[1]{{[\![}#1{]\!]}}
+\newcommand{\plangle}{{\langle\!\langle}}
+\newcommand{\prangle}{{\rangle\!\rangle}}
+\newcommand{\kk}{{\kappa_{\frac{c+1}{c-1}}}}
+
+\newcommand{\dps}{\displaystyle}
+%---------------------------------------------
+\author{Yezheng Li}
+\title{ECON 681: HW1-7}
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\section{HW1,2}
+	\begin{ans}[Additonal 1]
+		
+		According to notes as well as 
+\begin{equation}
+\left(p^*\right)' (n) =  - \frac{ d \left(p^* (n)\right)}{ nd' \left(p^*(n) \right) - S'\left(p^* (n) \right)}, x^*(n) = S\left(p^*(n)\right) = n d \left( p^*(n) \right).\label{eq:comparative static property}
+\end{equation}
+
+The comparative statics properties of a demand function $d(p)$ consist of how it changes when its arguments change. In our case, $S'\left(p^* (n) \right) >0$ (case of law of supply) since supply function is "upward-sloping", while $d'(p^*(n)) <0$ (case of law of demand).
+
+According to (\ref{eq:comparative static property}), $\left(p^*\right)' (n) <0$, that is equilibrium price goes up as number of buyers increases.
+		
+		\ul{Further assumption}: I think maybe it is better to assume existence of intercept between two functions $S(p), nd(p)$.
+	\end{ans}
+\begin{ans}[1.2]
+	\begin{enumerate}[(a)] For any $\x^0 \in \cX$,
+		\item \ul{$\succsim (\x^0) \subset \succsim (\x^0)$.} Of course correct.
+		\item \ul{$ \sim (\x^0) \subset \succsim (\x^0)$.} Of course correct since $\x^1 \sim \x^0$ implies $\x^1 \succsim \x^0$.
+		\item \ul{$ \succ (\x^0) \cup \sim  (\x^0) = \succsim (\x^0)$.} First prove $ \succ (\x^0) \cup \sim  (\x^0) \subset \succsim (\x^0)$: If $\x^1 \succ \x^0$ or $\x^1 \sim \x^0$ then $\x^1 \succsim \x^0$. Conversely speaking of $\supset$, suppose $\x^1 \succsim \x^0$, if $\x^1 \precsim \x^0$, then $\x^1 \sim \x^0$; otherwise, $\x^1 \succ \x^0$ -- whatever the case $ \succ (\x^0) \cup \sim  (\x^0) \supset \succsim (\x^0)$.
+		\item \ul{$ \succ (\x^0) \cap \sim (\x^0) = \emptyset$.} Suppose $ \x^1 \succ \x^0$ and $\x^1\sim \x^0$, then $ \x^1 \succ \x^0$ implies $ \x^1 \not \sim \x^0$, contradictory to $ \x^1 sim \x^0$. Therefore the claim holds.
+	\end{enumerate}
+\end{ans}
+
+\begin{ans}[1.4] \begin{itemize}\item  \textbf{\ul{Relation $\succ$ is transitive.}}
+		
+		Suppose $\x^1 \succ \x^2 $, $\x^2 \succ \x^3 $, it suffices to show $\x^1 \succ \x^3 $. 
+\begin{itemize}
+	\item We already have the fact $\x^1 \succsim \x^3 $: $\x^1 \succ \x^2 $, $\x^2 \succ \x^3 $ implies $\x^1 \succsim \x^2 $, $\x^2 \succsim \x^3 $, by axiom 2 (transitivity) we know $\x^1 \succsim \x^3 $.
+	\item It remains to show that $\x^3 \succsim \x^1 $ is impossible.  We prove this by contradition. Suppose not, that is, $\x^3 \succsim \x^1 $ holds. Then since $\x^2 \succsim \x^3 $, we have $\x^2 \succsim \x^1 $, contradicting the fact that $\x^1 \succ \x^2 $.
+\end{itemize}		
+	
+	\item  \textbf{\ul{Relation $\sim$ is transitive.}}
+	
+	Suppose $\x^1 \sim \x^2 $, $\x^2 \sim \x^3 $, it suffices to show $\x^1 \sim \x^3 $. 
+\begin{itemize}
+	\item We already have the fact $\x^1 \succsim \x^3 $: $\x^1 \succ \x^2 $, $\x^2 \succ \x^3 $ implies $\x^1 \sim \x^2 $, $\x^2 \sim \x^3 $, by axiom 2 (transitivity) we know $\x^1 \succsim \x^3 $.
+	\item Likewise, $\x^3 \succsim \x^2 $.
+\end{itemize}		
+Combining the two, we have $\x^1 \sim  \x^3 $.
+	\item 
+	
+	\textbf{If $\x^1 \sim \x^2 \succsim \x^3$, then $\x^1 \succsim \x^3$.}
+	
+
+	
+	$ \x^1 \sim \x^2$ implies $\x^1 \succsim \x^2$. According to Axiom 2, $\x^1 \succsim \x^3$ since $\x^1 \succsim \x^2$ and $\x^2 \succsim \x^3$.
+	\end{itemize}
+\end{ans}
+
+\begin{ans}[1.7] It suffices to show for any $\x^1,\x^2 \in \succsim \left( \x^0 \right)$, $t \in (0,1)$, we have $t \x^1 + (1-t) \x^2 \succsim \x^0$. Without loss of generality, suppose $\x^2 \succsim \x^1$. According to axiom 5', we have 
+	$t \x^1 + (1-t) \x^2 \succsim \x^1$, hence, $t \x^1 + (1-t) \x^2 \succsim \x^0$ by transitivity.
+\end{ans}
+
+\begin{ans}[1.9]
+	
+	\noindent.\newline 
+	.\newline
+	.\newline
+	.\newline
+	.\newline
+	.\newline
+	.\newline
+	.\newline
+	.\newline
+	
+This is just like assigning each point $\x = \begin{bmatrix}
+x_1 \\ x_2
+\end{bmatrix}$ a preference function $\cP(\x) \doteq \min \{x_1, x_2\}$ such that when assigning preference relation $\succsim$, $\x^1 \succsim \x^2$ if and only if $\cP(\x^1) \ge \cP(\x^2)$. Furthermore, 
+\begin{equation}
+\succsim (\x^0 ) = \left\{ \x \in \Reals_+^2:  \cP(\x ) \ge \cP(\x^0) \right\} = \left\{ \x \in \Reals_+^2:   x_1\ge  \cP (\x^0 ),  x_2\ge \cP (\x^0 ) \right\}, \label{eq:more of every good}
+\end{equation}
+is a right-upper quarter plane with the corner $\x^0$ and edged by $x_1= \cP (\x^0 ) $, $x_2 = \cP (\x^0 )$.
+
+\begin{enumerate}[(a)]
+	\item Speaking of Axiom 5' (weak convexity), 
+ which implies once $\x^1 \succsim \x^0$, we have $\cP(\x^1) \ge \cP(\x^0)$, hence for any $t \in [0,1]$, we have 
+ \begin{eqnarray*}
+ 	\cP(t \x^1 + (1-t) \x^0) & = & \min \left\{ tx^1_1 +(1-t)x^0_1 , tx^1_0 +(1-t)x^0_0\right\} \\
+\cP(\x^1 ) \ge \cP(\x^0) 	& \ge & \min \left\{ x^1_1 , x^0_1 , x^1_0 , x^0_0\right\} \ge \cP (\x^0)
+ \end{eqnarray*}
+
+
+In other word, $ t \x^1 + (1-t)\x^0 \succsim  \x^0  $.
+	\item As for Axiom 4 (strict monotonicity), 
+	\begin{itemize}
+		\item if $\x^0 \ge \x^1$, according to definition of $\cP$, we know $\cP(\x^0 ) \ge \cP(\x^1)$, then $\x^0 \succsim \x^1$;
+		\item if $\x^0 \gg \x^1$, which means $\cP(\x^0 ) > \cP(\x^1)$ (according to (\ref{eq:more of every good})), then $\x^0 \succ\x^1$. 
+	\end{itemize}
+
+To conclude, Axiom 4 holds.
+\item As for Axiom 5 (strong convexity), it does not hold. Just consider $\x^1 = \begin{bmatrix}
+1 \\ 100
+\end{bmatrix}$ and $\x^0 = \begin{bmatrix}
+1 \\ 1
+\end{bmatrix}$. Then for any $t \in (0,1)$, we have $t\x^1 + (1-t) \x^0 \precsim \x^0$ since  $\cP \left(t\x^1 + (1-t) \x^0\right)  = \cP (\x^0) = 1$.
+\end{enumerate}
+\end{ans}
+
+\begin{ans}[Additonal 2]
+\begin{itemize}\item 	$\succsim_2$ is not complete  $\begin{bmatrix}
+	1 \\ -1 
+	\end{bmatrix}$ and $\begin{bmatrix}
+	-1 \\ 1 
+	\end{bmatrix}$ has not preference relation. $\succsim_1$ is complete and this is an example discussed in the class.
+	\item It is transitive. Just because for $\x^2 \succsim_n \x^1$ and $\x^1 \succsim_n \x^0$, we then have $x^2_i \ge x^1_1 \ge x^0_i$, $i=1,2$. As a result, $\x^2 \succsim_n \x^1$.
+	\item It is continuous. This is because $\succsim_n (\x^0) = \bigcap_i \left\{\x\in \Reals_+^n; x_i \ge x_i^0 \right\} $, intercept of n closed sets. According to the result that "intersection of closed sets is closed", we know $\succsim_n (\x^0) $ is closed for all $\x^0$.
+	\item Both the two are strictly convex. We just prove for $\succ_2$: consider $\x^1 =\begin{bmatrix}	x^1_1 \\ z^1_2	\end{bmatrix} \succsim_2 \x^0 = \begin{bmatrix}
+	x^0_1 \\ z^0_2
+	\end{bmatrix}$ and for any $t \in (0,1)$, we have 
+	\begin{itemize}
+		\item $t\x^1 + (1-t)\x_0 \succsim_2\x^0$ since each coordinate of $t\x^1 + (1-t)\x_0$ is no less than $\x^0$; 
+		\item furtherly, $\x^0 \not\sim t\x^1 + (1-t)\x_0$.
+	\end{itemize}
+Or in one word, $t\x^1 + (1-t)\x_0 \succ_2\x^0$. According to definition in Axiom 5, we know $\succsim_2$ is strictly convex.
+	\end{itemize}
+\end{ans}
+
+
+\begin{ans}[Additional 1]
+	Following the hint, I focus on function $g$ within indifference curve $\cC(\bar u) \doteq \left\{(x_1, g(x_1)) \in \Reals_+^2: u(x_1, g(x_1)) = \bar u\right\}$ (indexed by constant $\bar u$) first:
+\begin{mdframed}
+		\begin{claim}
+		Considering point $(x,y)$ on indifference curve 
+		$$\cC(\bar u) = \left\{(x_1, g(x_1)) \in \Reals_+^2: u(x_1, g(x_1)) = \bar u\right\},$$ (indexed by constant $\bar u$) and the curve is smooth in a neighborhood of $(x,y)$, then
+		$g'<0$ and $g''\ge 0$.
+	\end{claim} 
+\end{mdframed}
+\begin{proof}
+	Applying implicit function theorem on $u(x_1, g(x_1)) = \bar u$, we obtain $u_1 +u_2 g' = 0$ and (since $u_1>0,u_2 >0$) hence $g' =  - \frac{u_1}{u_2} <0$.
+	
+	Again applying implicit function theorem on $u_1 (x_1, g(x_1)) +u_2 (x_1, g(x_1))g'(x_!) = 0$, we furtherly obtain
+	$$ u_{11} + 2u_{12} g' + u_{22} (g')^2 + u_2 g'' = 0 \Leftrightarrow  g'' = - \frac1{u_2}\begin{bmatrix} 1 \\ g'\end{bmatrix}^T \begin{bmatrix} u_{11} & u_{12} \\ u_{12} &  u_{22} \end{bmatrix} \begin{bmatrix} 1 \\ g'\end{bmatrix}.
+	$$
+	
+	Since $ 0 = [u_1,u_2] \begin{bmatrix}1 \\ g' \end{bmatrix}$, according to page 19 of textbook, we have $\begin{bmatrix} 1 \\ g'\end{bmatrix}^T \begin{bmatrix} u_{11} & u_{12} \\ u_{12} &  u_{22} \end{bmatrix} \begin{bmatrix} 1 \\ g'\end{bmatrix} \le 0$ (which can be geometrically understood).
+	
+	As a result $g'<0$ and $g''\ge 0$.
+\end{proof}
+
+Consequentially, at the point $(x,y) \in \cC (\bar u)$, the indifference curve $\cC (\bar u)$ slopes down ($g'<0$) and exhibit (weakly) diminishing marginal rates of substitution ($g' <0$ and $g'' \ge 0$ imply that $|g'|$ is nonincreasing).
+\end{ans}
+
+\begin{ans}[Additional 2; first proof suggested by Qiaoyi who consulted Akihisa Kato] 	$\Leftarrow)$ This is fairly easy since once there exits a utility representation $u$ such that $u(\alpha \x) = \alpha u(\x)$ for all $\alpha \ge 0$, then for any $\x, \y \in \Reals_{\ge 0}^L$ such that $\x \succeq \y \Leftrightarrow u(\x) \ge u(\y) $, we naturally have $u(\alpha \x) = \alpha u(\x) \ge \alpha u(\y) =  u( \alpha \y)  \Leftrightarrow \alpha \x \succeq \alpha \y$ for all $\alpha \ge 0$.
+	
+	
+	$\Rightarrow )$ Proof of theorem 1.1 on page 14 suggests a way of constructing $u^0(\x)$ by letting $u^0(\x) = \alpha$ for $\alpha \1_L \sim \x$, where $\alpha \in \Reals_{\ge 0}$ is shown to exist and be unique (and hence such $u^0(\x)$ is well defined).
+	
+	This constructed $u^0(\x)$ is actually homogeneous of degree 1: for any $\beta \ge 0, \x \in \Reals_{\ge 0 }^L$, since $f(\beta \x ) \1_L  \sim \beta \x $, $\beta f( \x ) \1_L  \sim \beta \x$, uniqueness of $\alpha$ implies $ f(\beta \x )  =  \beta f( \x )$.
+\end{ans}
+
+\begin{ans}[Additional 2; second proof/ my first proof -- referring to \cite{jain2005market}]
+	$\Leftarrow)$ This is fairly easy since once there exits a utility representation $u$ such that $u(\alpha \x) = \alpha u(\x)$ for all $\alpha \ge 0$, then for any $\x, \y \in \Reals_{\ge 0}^L$ such that $\x \succeq \y \Leftrightarrow u(\x) \ge u(\y) $, we naturally have $u(\alpha \x) = \alpha u(\x) \ge \alpha u(\y) =  u( \alpha \y)  \Leftrightarrow \alpha \x \succeq \alpha \y$ for all $\alpha \ge 0$.
+	
+	
+	$\Rightarrow )$
+	Since $\succeq $ is complete, transitive, strictly monotonic, continuous preference relation, by theorem 1.1 on page 14 on textbook, there is a real-valued $u(\x)$ utility function and without loss of generality, we fix $u(\0_L) = 0$. By strict monotonicity, we know $u(\x)$ is not identically zero, therefore there exits $\y^0 \in \Reals_+^L$ such that $u(\y^0) =c \ne 0$ and a rescaling can make $u(\y^0) = 1$. (By homotheticity, it is easy to recognize that $u\ge 0$.)
+	
+	
+	Now let us define $f:\Reals_{\ge 0}^L \to \Reals_{\ge 0}$ as $f(\x)    = \left\{ \begin{array}{rl}
+\alpha, &  \text{in case }u(\x) \ne 0\text{ where }u\left(\frac{\x}{ \alpha} \right) = 1;\\
+0, & \text{in case }u(\x) = 0
+	\end{array}\right.$  (the construction refers to \cite{jain2005market}). At first glimpse, $\alpha$ may not exist, or may not be unique (if there is any) and need to make sure
+\begin{mdframed}
+		\begin{claim}[existence and uniqueness of $\alpha$;Lemma 3.1 of \cite{jain2005market}] \label{claim:existence and uniqueness of alpha}
+		If $u(\x) \ne 0$, then there exists a unique $ \alpha >0 $ such that $u\left( \frac{\x}{ \alpha} \right) = 1 $.
+	\end{claim}
+\end{mdframed}
+	\begin{proof}
+(EXISTENCE) Since $u(\0_L) = 0$ and $u$ is continuous and monotonic, there exists $\beta \ge 0$ such that  $u (\beta \y^0) < u(\x)$. By homotheticity of $u$, $ u\left( \frac{\x}{\beta}\right) > u(y) =1 $. continuity of $u$ implies existence of $\alpha$.
+
+(UNIQUENSS) Suppose not, that is there exist $\alpha_1 ,\alpha_2$ such that $u \left( \frac{\x}{\alpha_1 }\right) = u \left( \frac{\x}{\alpha_2 }\right) = 1 $. By homotheticity, we know $u(\beta \x ) \equiv u(\x)$ for all $\beta \ge 0 $. By continuity and let $ \beta \to 0 \Rightarrow \beta\x \to \0_L$, we know $u(\x) =0$, contradictory to the fact $u(\x) \ne 0$.
+	\end{proof}
+	
+	
+Lastly notice $f$ can also be a utility function of $\succeq$:
+\begin{mdframed}
+		\begin{claim} $u(\x) \ge u(\y) \Leftrightarrow f(\x) \ge f(\y)$, $u(\x) > u(\y) \Leftrightarrow f(\x) > f(\y)$.
+		\end{claim}
+\end{mdframed}
+\begin{proof}
+	It suffices to show $u(\x) > u(\y) \Leftrightarrow f(\x) >  f(\y)$.
+	
+	$\Leftarrow)$ 
+	\begin{itemize}
+		\item In case $f(\y) = 0$, by definition of $f$, we know $u(\y) =0$ (and since $f(\x) >0$, we have $u(\x) >0$)
+		\item In case $f(\y) > 0$, Suppose not, that is, $u(\x) \le u(\y)$. By homotheticity and monotonicity and uniqueness in claim \ref{claim:existence and uniqueness of alpha}, $ 1=  u\left(\frac{\x}{f(\x)} \right)  < u\left(\frac{\x}{f(\y)} \right) \le  u\left(\frac{\y}{f(\y)} \right) =1$, a contradiction.
+	\end{itemize}
+	 
+	To conclude, necessity holds.
+	
+	$\Rightarrow)$ Suppose not, that is, $f(\x) \ge f(\y)$. Since $u(\x) >0$, we have $ 0 < f(\x) \le f(\y)$ by definition of $f$. Hence by homotheticity of $u$, $ 1  = u\left(\frac{\x}{f(\x)} \right) \le u\left(\frac{\x}{f(\y)} \right)  < u\left(\frac{\y}{f(\y)} \right) =1 $, a contradiction.
+	
+	Lastly, $f$ is homogeneous of degree $1$ just by noticing
+\begin{itemize}
+	\item for the case $f(\x) \ne 0$, $u\left( \frac{\beta \x}{f(\beta \x )} \right) =1 =  u \left( \frac{ \x}{  f( \x )} \right) =  u \left( \frac{\beta \x}{ \beta f( \x )} \right)  $. Due to uniqueness of value of $f$/ $\alpha$ in claim \ref{claim:existence and uniqueness of alpha}, we know $f(\beta \x ) = \beta f(\x)$ for all $\beta \in \Reals_+$.
+	\item for the case $f(\x) = 0$, suppose not, that is, $f(\beta_0\x) >0$ for some $\beta_0 >0$. Thus by the case discussed above, we know $0 < \frac1{\beta_0} \cdot f\left( \beta_0\x\right) = f\left(\frac1{\beta_0} \cdot \beta_0\x\right) =  f(\x) = 0$, a contradiction. Therefore, $f(\beta\x)=0 = \beta f(\x)$ for all $\beta \in \Reals_{\ge 0}$.
+\end{itemize}
+	
+	To conclude $f$ can be the utility function that is homogeneous of degree 1; in other word, sufficiency holds.
+\end{proof}
+\end{ans}
+Before solving UMPs in Q3, Q4, Q6, it is wise to make clear the sufficient condition for solving UMPs 
+%\begin{subenvir}{thm}
+\begin{mdframed}	\begin{thm}[From lecture on Sept. 20th 2017, a sufficient condition]
+		\label{thm:lecture verion of sufficient condition}
+	As for UMP $\dps \max_{\substack{\x \ge \0_L \\ \langle  \p ,\x \rangle \le w}} u(\x)$, we have Lagrangian
+	$$
+	L(\x,\lambda) = u(\x) - \lambda \left( \langle  \p ,\x \rangle - w \right), \lambda \ge 0, \x \ge \0_L.
+	$$
+	
+	If $u$ is quasi-concave and $\x^0,\lambda_0$ satisfies
+	\begin{enumerate}[(1)]
+		\item $\frac{\partial L}{\partial x_j}(\x^0,\lambda_0) = \frac{\partial u}{\partial x_j} - \lambda p_j \le 0$ (=0 if $x_j ^0>0 $), $j =1,2,\ldots$;
+		\item $L_{\lambda} (\x^0,\lambda_0)  = w -  \langle  \p ,\x^0 \rangle  \ge 0 $ (=0 if $\lambda >0$)
+		\item $ \x^0 \ge \0_L, \lambda_0 \ge 0$,
+	\end{enumerate}
+then $\x^0$ is a global maximum of original UMP.
+		
+\end{thm}
+\end{mdframed}
+%\begin{thm}[Kuhn-Tuck condtion -- necessary conditions for maxima of real-valued function subject to inequality constraints] See theorem A2.20 on page 598 of textbook.
+%\end{thm}
+%\end{subenvir}
+
+\begin{ans}[3, JR Exercise 1.29] As for the UMP  $\dps \max_{\substack{x_t \ge 0 \\\sum_{t = 0}^{\infty} x_t \le 1}}   u(x_0,x_1,\ldots)  $,
+	with the  Lagrangian 
+	$$\dps L(x_0,x_1,\ldots;\lambda) = u(x_0,x_1,\ldots)  - \lambda\left( \sum_{t= 0}^\infty  x_t  - 1 \right), \text{ with }\lambda \ge 0, x_t >  0,$$
+	where I already turn $x_t \ge 0$ into $x_t >0$ since  zero assignment for any $x_t$ leads to $-\infty$ in utility.
+	Suppose the optimal level is $\x^* =\begin{bmatrix}
+	x_0^* \\ x_1^* \\ \vdots 
+	\end{bmatrix}$ with corresponding $\lambda^* \ge 0$, I can actually apply theorem \ref{thm:lecture verion of sufficient condition}, notice
+	\begin{itemize}
+		\item $u(x_0,x_1,\ldots)$ is quasi-concave: each $\ln (x_t)$ is quasi-concave; linear combination with all nonnegative coefficients of quasi-concave functions results in a quasi-concave function.
+		\item Since $x_t >0$ for all $t$, by theorem \ref{thm:lecture verion of sufficient condition}, we know $	 \frac{\beta^t}{x_t^* }= \lambda^* $, therefore, $x_t^* =  \frac{\beta^t}{\lambda^*} $.
+		\item From the above we alse get $\lambda^* >0$, and then as for $\frac{\partial L}{\partial \lambda}$, we get a final constraint  $\sum_{t=0}^\infty x_t = 1$.
+	\end{itemize}
+	As a result, $x_t = \beta^t (1- \beta), t=0,1,\ldots$ is the optimal level of consumption in each period.
+\end{ans}
+\begin{ans}[4]  As for UMP $\dps \max_{\x \ge \0_2, \langle \x,\p\rangle \le w } u(\x)$, in each case of (a,b,c,d), it is easy to verify that $u$ is quasi-concave; suppose $(\x^*,\lambda^*)$ is the global maximal for the Lagrangian 
+	$$L(\x,\lambda) = u(\x)  - 	 \lambda(  \langle \x , \p 	\rangle - w ), \text{ with }\lambda \ge 0, x_1,x_2 \ge 0.$$ 
+	
+	By applying theorem \ref{thm:lecture verion of sufficient condition},
+	\begin{enumerate}[(a)]
+		\item  first two derivatives lead to $1 \le \lambda^* p_1, 1 \le \lambda^* p_2$ from which I know $\lambda^* \ge \max\left\{ \frac1{p_1},  \frac1{p_2} \right\} >0$ (prices $p_1,p_2 >0$ should be presumed); hence third derivative leads to $\langle \x^* , \p 	\rangle = w  $ which implies $\x^* \ne \0_2$: there are three cases left
+		\begin{itemize}
+			\item If $x_1^* =0, x_2^* >0$, then $ \lambda^*  = \frac1{p_2} \left(\ge \frac1{p_1}\right)$ -- this implies that this case happens only when $p_1 \ge p_2$. In this case, $x_1^* = 0,x_2^* = \frac{w}{p_2}$ and indirect utility function $v(\p,w) = \frac{w}{p_2}$;
+			\item If $x_1^* >0, x_2^* =0$, by the same philosophy, this case happens only when $p_1 \le p_2$. In this case, $x_1^* =  \frac{w}{p_1},x_2^* =0$ and indirect utility function $v(\p,w) = \frac{w}{p_1}$.
+			\item IF $x_1^*,x_2^* >0$, then $ \lambda^*  = \frac1{p_1} = \frac1{p_2}$, where we have to presume $p_1=p_2$. In this case, $x_1 = x_2 = \frac{w}{2p_1}$ and indirect utility function $v(\p,w) = \frac{w}{p_1}$.
+		\end{itemize}
+	
+	 \ul{To clean everything up, indirect utility function is} $v(\p,w) = \frac{w}{\min \{p_1, p_2\}}$, and speaking of optimal demands
+	\begin{itemize}
+		\item in case $p_1 <p_2$, $x_1^* = \frac{w}{p_1}, x_2^*=0$;
+				\item in case $p_1 >p_2$, $x_1^* =0  , x_2^*=\frac{w}{p_2}$;
+				\item in case $p_1=p_2$,  any $\x^* \ge \0_2$ satisfies $\1_2^T\x=\frac{w}{p_1}$ is optimal.
+		\end{itemize}
+	
+		\item (We can assume $x_1,x_2 >0$ since otherwise utility value is $-\infty$.) Marginal utility of goods / $\x$- derivatives with respect to $x_1,x_2$ lead to $\lambda^* = \frac1{x_1^*p_1} = \frac1{x_2^*p_2 }>0$ and therefore $\lambda$-derivative leads to $\langle \x^* , \p 	\rangle = w$. As a result,  the optimal demand is $\x^* = \begin{bmatrix} x_1^* \\ x_2^* \end{bmatrix}  = \frac{w}2 \begin{bmatrix}
+		\frac1{p_1} \\ \frac1{p_2} \end{bmatrix}$ with corresponding indirect utility function $v(\p,w) =  2 \ln \left(w /2\right) - \ln p_1 - \ln p_2$;
+		\item  (Notice $u_{(c)}(\x)= \exp\left( \exp\left(u_{(b)}(\x) \right) \right)$, although we may mathematically discuss the case $x_1=0$ or $x_2=0$, but if $-\infty$ as utility value is taken into account, (b,c) should have no difference in optimal demand as well as indiret utility function differs by $\exp\exp$.)
+		
+		
+		Marginal utility of goods / $\x$- derivatives with respect to $x_1,x_2$ lead to $\lambda^* \ge  e^{  x_1^*x_2^*}\max\left\{ \frac{x_2^*}{p_1}, \frac{x_1^*}{p_2} \right\}$ where right hand side tends to 0 as $x_1^* \to 0$ or $x_2^* \to 0$.
+		\begin{itemize}
+			\item In case $x_1^* =x_2^*= 0$, $u(\x^*) = 1$ which is impossible since (for example) by taking $x_1 = 0, x_2 = \frac{w}{p_2}$ we can get a larger utility;
+			\item in case $x_1^* = 0, x_2^* >0$, we have $\lambda^* =  \frac{\partial L}{\partial x_2}(0,x_2^*)=0$; however, $\lambda^* \ge  \frac{\partial L}{\partial x_1}(0,x_2^*)=\frac{x_2^*}{p_1} >0$ a contradition.
+		\end{itemize}
+	The only possibility is $x_1^* ,x_2^* >0$, hence $\lambda^*  e^{ -  x_1^*x_2^*}  =   \frac{x_2^*}{p_1} = \frac{x_1^*}{p_2} $ and $\langle \x^* , \p 	\rangle = w$ by theorem \ref{thm:lecture verion of sufficient condition}. 
+		
+		
+		As a result,  the optimal demand is $\x^* = \begin{bmatrix} x_1^* \\ x_2^* \end{bmatrix}  = \frac{w}2 \begin{bmatrix}
+		\frac1{p_1} \\ \frac1{p_2} \end{bmatrix}$ with corresponding indirect utility function $v(\p,w) =  \exp\left(\frac{w^2}{4 p_1   p_2}\right)$.
+		\item  marginal utility of goods ($\x$-derivatives) lead to $\lambda^* \ge \max \left\{\frac1{2 p_1\sqrt{x_1^*}}, \frac1{p_2} \right\} >0$ （implying $x_1^* >0$), and recursively, $\lambda^* = \frac1{2 p_1\sqrt{x_1^*}} \ge \frac1{p_2 }$; hence $\lambda$-derivative leads to $ w = \langle \p ,\x^* \rangle $ (which coincides with the comment made at the beginning of (c)). 
+		
+		\begin{itemize}
+			\item In case $x_2^* =0$, we have $x_1^* = \frac{w}{p_1}$ but we require $ w \le \frac{4 p_2^2}{p_1}$ in order to make sure "$ \frac1{2 p_1\sqrt{x_1^*}} \ge \frac1{p_2 }$". Corresponding indirect utility function is $v(\p,w) = \sqrt{\frac{w}{p_1}}$.
+			\item In case $x_2^* >0$, from  $\lambda^* = \frac1{2 p_1\sqrt{x_1^*}} = \frac1{p_2} $, I can obtain $x_1^* = \frac{p_2^2}{4p_1^2}$, $x_2^* = \frac{w} {p_2} - \frac{p_2}{4p_1 }$ but of course we require $w \ge \frac{ p_2^2}{ 4 p_1}$. Corresponding indirect utility function is $v(\p,w) =\frac{w} {p_2} +\frac{p_2}{4p_1 }$. 
+		\end{itemize}
+	
+	To clean everything up,
+	\begin{itemize}
+		\item in case $w \le \frac{ p_2^2}{ 4 p_1}$, $x_1^* = \frac{w}{p_1},x_2^* =0$; correspondingly, $v(\p,w) = \sqrt{\frac{w}{p_1}}$;
+		\item in cae $w > \frac{ p_2^2}{ 4 p_1}$, $x_1^* = \frac{p_2^2}{4p_1^2}, x_2^* = \frac{w}{p_2} - \frac{p_2}{4 p_1}$; correspondingly, $v(\p,w) =\frac{w} {p_2} +\frac{p_2}{4p_1 }$. 
+	\end{itemize} 
+Or in one word, optimal demands are $x_1^* = \frac{\sigma}{p_1}$, $x_2^* = \frac{\sigma}{p_2} - \frac{p_2}{4 p_1}$
+with corresponding indirect utility function $v(\p, w)  = \sqrt{\frac{\sigma}{p_1}} + \frac{\sigma}{p_2} - \frac{p_2}{4 p_1}$ where 
+$ \sigma = \max\left\{w, \frac{p_2^2}{4p_1} \right\}$.
+	\end{enumerate}
+\end{ans}
+
+\begin{ans}[5, JR Exercise 1.47]
+	\begin{enumerate}[(a)]
+		\item By writing $u(\x) = \langle \c, \x \rangle$,
+\begin{eqnarray*}
+\frac{ e\left( \p ,U \right)}U & = & \frac1U   \max_{\substack{\x \in \Reals^n_{\ge 0} \\ \langle \c, \x \rangle \le U}  } \langle \p, \x \rangle  =  \max_{\substack{\x \in \Reals^n_{\ge 0} \\ \langle \c, \x \rangle \le U}  } \left\langle \p, \frac{\x}U \right\rangle  =   \max_{\substack{\frac{\x}U \in \Reals^n_{\ge 0} \\ \left\langle \c, \frac{\x}U \right\rangle \le 1 } } \left\langle \p, \frac{\x}U \right\rangle \\
+&   = &  \max_{\substack{\y \in \Reals^n_{\ge 0} \\ \left\langle \c, \y \right\rangle \le 1 } } \left\langle \p, \y \right\rangle = e(\p,1),
+\end{eqnarray*}
+which finish the argument for (a).
+\item By theorem 1.8 on page 42 of textbook, suppose $e(\p, 1) \ne 0$,
+$$
+e\left(\p, v(\p, y)\right) =  e(\p, 1) v(\p ,y)= y \Rightarrow v(\p ,y)= \left[ e(\p, 1) \right]^{-1} y,
+$$
+hence marginal utility of income is $\frac{\partial v(\p ,yU)} {\partial y} = \left[ e(\p, 1) \right]^{-1} $ which is independent of $\y$.
+	\end{enumerate}
+\end{ans}
+
+\begin{ans}[6, JR Exercise 1.54] As for UMP $\dps \max_{\substack{ \x \ge \0_n \\ \langle \p ,\x \rangle \le w} } A \prod_{i=1}^n x_i^{\alpha_i}$, with the Lagrangian
+	$$
+	L\left( \x, \lambda\right) =  A \prod_{i=1}^n x_i^{\alpha_i} - \lambda (\langle \p ,\x \rangle -   w ), \lambda \ge 0, \x \ge \0_n,
+	$$
+	and $(
+	x^*,\lambda^*)$ the global optimal. By theorem \ref{thm:lecture verion of sufficient condition}, marginal utility of goods lead to $  \lambda^*  \ge \frac{ \alpha_i }{x_i^* p_i} u(\x^*) >0 $ (I presume $\alpha_i >0 $) implying $x_i >0$, and recursively,  $x_i^* =  \frac{ \alpha_i }{\lambda^*  p_i} u(\x^*) $. hence $\lambda$-derivative leads to $\langle \p ,\x^* \rangle  =    w $. As a result,
+	\begin{enumerate}[(a)]
+		\item Marshallian demand functions are $x_i^* = \frac{ \alpha_i w}{p_i}$ (with corresponding $\lambda^* = \frac{ u (\x^*)}{w }$).
+		\item Indirect utility function is $v(\p,w) =   A \prod_{i=1}^n  \left(  \frac{ \alpha_i w}{p_i} \right)^{\alpha_i} \xlongequal{\sum_{i=1}^n \alpha_i = 1}  A w  \prod_{i=1}^n \left(  \frac{ \alpha_i }{p_i} \right)^{\alpha_i}$.
+		\item Speaking of expenditure functionwe can apply theorem 1.8 on page 41 of the textbook:
+		$$v\left(\p, e(\p,U)\right)  = e(\p,U) \cdot  A  \prod_{i=1}^n \left(  \frac{ \alpha_i }{p_i} \right)^{\alpha_i}= U \Rightarrow  e(\p,U)  = \frac{U}A  \prod_{i=1}^n \left(  \frac{p_i}{ \alpha_i } \right)^{ \alpha_i}. $$
+		
+		\item By Shephard’s lemma in theorem 1.7 on page 37 of the textbook, we know Hicksian demands are
+		$$ \x^h (\p,U)  = \left[\nabla_{\p} e(\p,U)\right]^T = e(\p,U) \left[ \frac{\alpha_1}{p_1}, \frac{\alpha_2}{p_2}, \ldots, \frac{\alpha_n}{p_n} \right]^T.
+		$$
+	\end{enumerate}
+\end{ans}
+
+\subsection{Extra}
+\begin{prob}[JR 1.65 page 70] Show that utility function is homothetic if and only if all demand functions are multiplicatively separable in prices and inceom and of the form $\x(\p,y) = \phi(y) \x(\p,1)$.
+\end{prob}
+\begin{ans}[JR 1.65 page 70]$\Rightarrow)$ Suppose $u = g \circ f$ where $g $ is strictly increasing and $f$ is homogeneous of degree $\alpha $.
+	For expenditure function,
+\begin{eqnarray*}
+e(\p, U ) & =  & \min_{u(\x) \ge U} \langle \p , \x \rangle     = \min_{  f (\x) \ge g^{-1} (U)} \langle \p , \x \rangle   = \min_{  f \left( \left[  \frac{ g^{-1} (1)}{g^{-1} (U)}\right]^{\frac1{\alpha}}\x \right)  \ge g^{-1} (1)}  \langle \p , \x \rangle  \\
+& = &  \left[  \frac{ g^{-1} (U)}{g^{-1} (1)}\right]^{\frac1{\alpha}} \min_{  f \left(  \x \right)  \ge g^{-1} (1)}  \langle \p , \x \rangle  = \left[  \frac{ g^{-1} (U)}{g^{-1} (1)}\right]^{\frac1{\alpha}} e(\p, 1) \doteq y ,
+\end{eqnarray*}
+then Shephard's lemma implies  $\x^h = \left[  \frac{ g^{-1} (U)}{g^{-1} (1)}\right]^{\frac1{\alpha}}\left[\nabla_{\p}e(\p,1)\right]^T$. From $\x^h$ to $\x^*$, just notice
+\begin{eqnarray*}
+&& e(\p, v(\p,y) ) = y  \Rightarrow g^{-1}( v(\p,y) ) = \left[\frac{y}{e(\p,1)}\right]^{\alpha}g^{-1}(1) \\
+& \Rightarrow & \left(g^{-1}\right)' \cdot \nabla_{\p} v(\p,y)  = g^{-1}(1)y^{\alpha } \cdot \nabla_{\p}\left[e(\p,1)\right]^{-\alpha} = -\alpha g^{-1}(1)y^{\alpha } \left[e(\p,1)\right]^{-(\alpha+1 )}\cdot \nabla_{\p} e(\p,1) 
+\end{eqnarray*}
+\begin{eqnarray*}
+ \x^* & =  & - \frac{\nabla_{\p} v(\p,y)}{v_y(\p,y) }  =  \alpha g^{-1}(1)y^{\alpha }  \frac{ \left[e(\p,1)\right]^{-(\alpha+1 )}}{\left(g^{-1}\right)' v_y(\p,y) }\cdot \left[\nabla_{\p} e(\p,1)\right]^T  \\& = & \alpha g^{-1}(1)y^{\alpha }  \frac{ \left[e(\p,1)\right]^{-(\alpha+1 )}}{\left(g^{-1}\right)' v_y(\p,y) }\cdot \x^h (\p,1) = \alpha g^{-1}(1)y^{\alpha }  \frac{ \left[e(\p,1)\right]^{-(\alpha+1 )}}{\frac{ \partial  g^{-1}(v(\p,y))}{\partial y}  }\cdot \x^h (\p,1)  \\
+ & = &\alpha g^{-1}(1)y^{\alpha }  \frac{ \left[e(\p,1)\right]^{-(\alpha+1 )}}{\frac{\alpha y^{\alpha - 1}}{\left[  e(\p,1) \right]^{\alpha} }g^{-1}(1)  }\cdot \x^h (\p,1)  =   y \frac{    \x^h (\p,1)   }{ e(\p,1)   },
+\end{eqnarray*}
+and hence we finish our argument.
+
+
+$\Leftarrow)$ We need a lemma:
+\begin{lem}
+	$u$ is homothetic if and only if $u(\x) \ge u(\y) \Leftrightarrow u(t\x) \ge u(t\y),\forall t,\x,\y$.
+\end{lem}
+\end{ans}
+
+Notice $u(t \x^* (\p,y  ) ) \ge u(\w)$ for all $\w$ such that $\langle \p, \w\rangle \le  ty$; and the fact that $\langle \p, t \x^*(\p ,y) \rangle \le t y$, we know 
+\begin{eqnarray*}
+ u(t\phi(y) \x^*(\p, 1) ) & \xlongequal{\text{separability}} & u(t \x^*(\p,y )) = v(\p, t y ) = u(x^*(\p, ty)) \\
+ & \xlongequal{\text{separability}} & u( \phi(ty)x^*(\p, 1)),
+\end{eqnarray*}
+then we know $t\phi(y) = \phi(ty)$ for all $t,y$.
+
+On the other hand,
+$\x^*(t\p,t y )  =\x^*(\p, y)$, by taking derivative w.r.t. $t$  (at point $t =1 $)as well as using $\x^*(\p,y ) = \phi(y) \x^*(\p,1)$, we obtain 
+ \begin{eqnarray*}
+&&  \phi(y)\cdot \nabla_{\p}\x^*(\p, 1 ) \circ \p + y \phi'(y)\cdot \x^*(\p,1) = 0 \\  & \Rightarrow & \nabla_{\p}\x^*(\p, 1 ) \circ \p = - \frac{y \phi'(y)}{\phi(y)}\cdot \x^*(\p,1) \\& \Rightarrow &  \frac{1}{x_j^*(\p,1) } \nabla_{\p}x_j^*(\p, 1 ) \circ \p  = - \frac{y  	\phi'(y)}{\phi(y)} \doteq k,
+ \end{eqnarray*}
+
+
+\section{HW3}
+
+\begin{prob}[1.63]  The substitution matrix of a utility-maximising consumer’s demand system at prices $\p = (8,p)$ is $ \begin{bmatrix}
+	\frac{\partial x_1^h(\p,u)}{\partial p_1} & \frac{\partial x_1^h(\p,u)}{\partial p_2} \\	\frac{\partial x_2^h(\p,u)}{\partial p_1} & \frac{\partial x_2^h(\p,u)}{\partial p_2} 
+	\end{bmatrix} = \begin{bmatrix}
+	a & b \\ 2 & -\frac12
+	\end{bmatrix}$, find $a,b$ and $p$.
+\end{prob}
+\begin{ans}[1.63]
+	From symmetry of substitution matrix, we have $b = 2$. Negative semidefiniteness of substitution matrix definitely implies $-8 \le a \le 0$. 
+	
+	From exercise 1.62 (Hicks' third law, that is, Hicksian demand is homogeneous of degree zero), we obtain $8a+2p = 2\times 8 - \frac{p}2=0$, hence, $p=32,a=-8$.
+	
+	To conclude, $a= -8,b=2,p=32$.
+\end{ans}
+\begin{prob}[Additional 1]
+	A consumer in a three-good economy with wealth level $y > 0$ is maximizing locally non-satiated preferences on $\Reals^3$ and has demand functions for goods 1 and 2 given by:
+$$ x_1(\p,y)=100- 5\frac{p_1}{p_3}+ \beta \frac{p_2}{p_3 }+\delta \frac{y}{ p_3}, 
+x_2(\p,y)=  \alpha - 5\frac{p_1}{p_3}+\beta \frac{p_2}{p_3}+ \gamma \frac{y}{p_3}.
+$$
+	\begin{enumerate}[(a)]
+	\item Calculate the demand for good $3$.
+	\item  Verify that $x_1$, $x_2$ are homogeneous of degree $0$.
+	\item What conditions on $\alpha,\beta,\delta$ are implied by demand theory.
+\end{enumerate}
+
+
+	\end{prob}
+
+\begin{ans}[Additional 1]
+	\begin{enumerate}[(a)]
+		\item \underline{Calculate the demand for good $3$.}
+		
+		Due to non-statiation (Axiom 4'), we know the $\langle \p,\x\rangle =y$, that is the demand function is on the budget line. Hence
+\begin{eqnarray*}
+		&&x_3 (\p,y)\\
+		& = &  \frac{y-p_1x_1-p_2x_2}{p_3} \\
+		 & = & \frac{(p_3 - \delta p_1- \gamma p_2)y}{p_3^2} + \frac{5p_1^2 + (5-\beta)p_1p_2 - \beta p_2^2}{p_3^2} - \frac{100 p_1}{p_3} - \frac{\alpha p_2}{p_3},
+\end{eqnarray*}
+		\item \underline{Verify that $x_1$, $x_2$ are homogeneous of degree $0$.}
+		
+		This is very easy, just notice  for all $t > 0$,
+		\begin{eqnarray*}x_1(t\p,ty)& = & 100+\frac{- 5 tp_1 + t\beta p_2 + t\delta y}{ tp_3} = 100  +\frac{- 5 p_1 + \beta p_2 + \delta y}{ p_3}  = x_1(\p,y), \\
+			x_2(t\p,ty) & = &  \alpha +\frac{ - 5tp_1 +\beta tp_2 + \gamma ty}{tp_3} =  \alpha +\frac{- 5 p_1+ \beta p_2 + \gamma y}{p_3}= x_2(\p,y).
+		\end{eqnarray*}
+	By definition, they are both homogeneous of degree 0.
+		\item \underline{What conditions on $\alpha,\beta,\delta$ are implied by demand theory.}
+		
+		Suggested by Akihisa Kato, we should check negative semidefiniteness of Slutsky matrix
+\begin{eqnarray*}
+	&&	\bbS(\p,y) \\
+		& = &  \nabla_{\p} \x  + \x \left[\frac{\partial \x}{\partial y}\right]^T = \begin{bmatrix}
+		\partial_1 x_1 & 		\partial_2 x_1  & 		\partial_3 x_1 \\
+				\partial_1 x_2 & 		\partial_2 x_2  & 		\partial_3 x_2 \\
+						\partial_1 x_3 & 		\partial_2 x_3  & 		\partial_3 x_3
+		\end{bmatrix} + \frac{\partial \x}{\partial y} \x^T \\
+	&= & \begin{bmatrix}
+		\partial_1 x_1 & 		\partial_2 x_1  & 		\partial_3 x_1 \\
+		\partial_1 x_2 & 		\partial_2 x_2  & 		\partial_3 x_2 \\
+		- \frac{x_1}{p_3} - \frac{p_1 \partial_1 x_1 + p_2 \partial_1 x_2}{p_3}& 		- \frac{x_2}{p_3} - \frac{p_1 \partial_2 x_1 + p_2 \partial_2 x_2}{p_3} & 	-\frac{x_3}{ p_3 }- \frac{p_1 \partial_3 x_1 + p_2 \partial_3 x_3}{p_3}
+		\end{bmatrix}  +  \x \left[\frac{\partial \x}{\partial y}\right]^T.
+\end{eqnarray*}
+
+Denote 
+$\Pi = \begin{bmatrix}  1  \\ & 1 \\ \frac{p_1}{ p_3} & \frac{p_2}{ p_3} & 1\end{bmatrix}$ and notice $$\Pi \nabla_{\p} \x   \Pi^T =  \begin{bmatrix}
+\partial_1 x_1 & 		\partial_2 x_1  & 		\frac{p_1 \partial_1 x_1 + p_2 \partial_2 x_1 +p_3 \partial_3 x_1}{p_3} \\
+\partial_1 x_2 & 		\partial_2 x_2  & 		\frac{p_1 \partial_1 x_2 + p_2 \partial_2 x_2 +p_3 \partial_3 x_2}{p_3} \\
+- \frac{x_1}{p_3} & 		- \frac{x_2}{p_3}  & 	-\frac{y}{ p_3 }
+\end{bmatrix},$$
+we then have
+\begin{eqnarray*}
+&& \Pi 	\bbS(\p,y)  \Pi^T \\
+&=  & \begin{bmatrix}
+\partial_1 x_1 & 		\partial_2 x_1  & 		\frac{p_1 \partial_1 x_1 + p_2 \partial_2 x_1 +p_3 \partial_3 x_1}{p_3} \\
+\partial_1 x_2 & 		\partial_2 x_2  & 		\frac{p_1 \partial_1 x_2 + p_2 \partial_2 x_2 +p_3 \partial_3 x_2}{p_3} \\
+- \frac{x_1}{p_3} & 		- \frac{x_2}{p_3}  & 	-\frac{y}{ p_3^2 }
+\end{bmatrix}  \begin{bmatrix}
+\partial_y x_1 \\ \partial_y x_2 \\ \frac1{p_3}
+\end{bmatrix}  + \begin{bmatrix}
+x_1 \\ x_2 \\ \frac{y}{p_3}
+\end{bmatrix}^T \\
+&=&  \begin{bmatrix}
+	\partial_1 x_1 & 		\partial_2 x_1  & 	 -\frac{y \partial_y x_1}{p_3}\\
+	\partial_1 x_2 & 		\partial_2 x_2  & 	 -\frac{y \partial_y x_2}{p_3} \\
+	- \frac{x_1}{p_3} & 		- \frac{x_2}{p_3}  & 	-\frac{y}{ p_3^2}
+\end{bmatrix} +\begin{bmatrix}
+	\partial_y x_1 \\ \partial_y x_2 \\ \frac1{p_3}
+\end{bmatrix}  \begin{bmatrix}
+x_1 \\ x_2 \\ \frac{y}{p_3}
+\end{bmatrix}^T 
+\end{eqnarray*}
+wher we utilize Euler's theorem of homogenity; furthermore,
+\begin{eqnarray*}
+p_3	\Pi 	\bbS(\p,y)  \Pi^T 
+	&= & p_3 \begin{bmatrix}
+		\partial_1 x_1 & 		\partial_2 x_1  & 	 -\frac{y \partial_y x_1}{p_3}\\
+		\partial_1 x_2 & 		\partial_2 x_2  & 	 -\frac{y \partial_y x_2}{p_3} \\
+		- \frac{x_1}{p_3} & 		- \frac{x_2}{p_3}  & 	-\frac{y}{ p_3^2}
+	\end{bmatrix} + p_3 \begin{bmatrix}
+		\partial_y x_1 \\ \partial_y x_2 \\ \frac1{p_3}
+	\end{bmatrix}  \begin{bmatrix}
+		x_1 \\ x_2 \\ \frac{y}{p_3}
+	\end{bmatrix}^T \\
+& = & p_3\begin{bmatrix}
+	-\frac5{p_3} & \frac{ \beta }{p_3} & -\frac{y \partial_y x_1}{p_3} \\
+	- \frac5{p_3} &  \frac{ \beta }{p_3}  & -\frac{y \partial_y x_2}{p_3} \\
+- \frac{x_1}{p_3} & 		- \frac{x_2}{p_3}  & 	-\frac{y}{ p_3^2 }
+\end{bmatrix}  +p_3  \begin{bmatrix}
+\frac{ \delta }{p_3} \\ \frac{ \gamma }{p_3} \\ \frac1{p_3}
+\end{bmatrix} \begin{bmatrix}
+x_1 \\ x_2 \\ \frac{y}{p_3}
+\end{bmatrix}  ^T \\
+& =&\begin{bmatrix}
+	- 5 &  \beta & - \frac{\delta y}{p_3} \\
+	-  5 &  \beta  &-  \frac{\gamma y}{p_3}  \\
+	- x_1  & 		- x_2  & 	-\frac{ y}{p_3}
+\end{bmatrix}  +  \begin{bmatrix}
+	\delta  \\ \gamma \\ 1
+\end{bmatrix} \begin{bmatrix}
+x_1 \\ x_2 \\ \frac{y}{p_3}
+\end{bmatrix} ^T \\
+& = & \begin{bmatrix}
+	-5 + \delta x_1  & \beta +\delta  x_2 & 0 \\
+	-5 + \gamma x_1 & \beta + \gamma x_2 & 0 \\
+	0 & 	  0& 0
+\end{bmatrix} .
+\end{eqnarray*}
+
+Basically negative semidefiniteness of $\bbS (\p,y)$ is the same as negative semidefiniteness of $ \begin{bmatrix}
+-5 + \delta x_1  & \beta +\delta  x_2 \\
+-5 + \gamma x_1 & \beta + \gamma x_2 
+\end{bmatrix} $. As for $  \beta +\delta  x_2  = -5 + \gamma x_1 $, due to arbitrariness of $\p,y$, we obtain \begin{equation}\beta+ \alpha \delta = -5 + 100 \gamma, \gamma = \delta.
+\end{equation}
+
+In this case, we reduce to discuss negative semidefiniteness of 
+\begin{eqnarray*}
+&& \begin{bmatrix}
+-5 + \delta x_1  & \beta +\delta  x_2 \\
+-5 + \gamma x_1 & \beta + \gamma x_2 
+\end{bmatrix} =  \begin{bmatrix}
+	-5 + \delta x_1  & \beta +\delta  x_2 \\
+	-5 + \delta x_1 & \beta + \delta x_2 
+\end{bmatrix} \\
+& =&  \begin{bmatrix}
+-5 + 100 \delta+\frac{\delta}{p_3} (-5 p_1 + \beta p_2 + \delta y) & -5 + 100 \delta + \frac{\delta}{p_3} (-5 p_1 + \beta p_2 + \delta y) \\
+-5 + 100 \delta + \frac{\delta}{p_3} (-5 p_1 + \beta p_2 + \delta y) & -5 + 100\delta  +  \frac{\delta}{p_3} (-5 p_1 + \beta p_2 + \delta y)
+\end{bmatrix} \\
+&= & \left[ -5 + \delta \left(100 + \frac{-5 p_1 + \beta p_2 + \delta y}{p_3} \right) \right]  \begin{bmatrix}
+1 & 1 \\ 1 & 1
+\end{bmatrix} .
+\end{eqnarray*}
+
+As a result, $\alpha,\beta,\gamma,\delta$ need to satisfy:
+\begin{eqnarray*}
+\beta+ \alpha \delta = -5 + 100 \gamma, \gamma = \delta,
+	\\
+ -5 + \delta \left(100 + \frac{-5 p_1 + \beta p_2 + \delta y}{p_3} \right) <0.
+\end{eqnarray*}
+If $(\p,y)$ represents any point of $\Reals_+^3$ (the question itself only mentions $\Reals^3$), I think $\alpha$ is arbitrary, while $\beta = -5, \gamma =  \delta = 0$.
+	\end{enumerate}
+\end{ans}
+
+
+
+\begin{rem}
+	Suggested by Qiaoyi Wang, we can just focus on first 2 by 2 dominant matrix. It makes sense not only due to above calculation, but mathematically as well.
+\end{rem}
+\begin{prob}[Additional 2]
+	Three candidates are running for mayor of Bucolia. The big issue is how will Bucolia collect revenue to pay for the operation of its new Ötness center. H. Economicus, a citizen of Bucolia, is deciding how to cast his vote. All three candidates have proposed combinations of mandatory once-only membership fees (head taxes) and per-use fees. The proposals of candidates A, B, and C, respectively, are as follows
+	\begin{enumerate}[(a)] 
+	\item $0$ membership fee,  $5$  use fee.
+	\item  $20$ membership fee, $3$ use fee. 
+	\item  $40 $ membership fee, $2$ use fee.
+\end{enumerate}
+H. Economicus would use the facility 10 times if A wins; 15 times if B wins, and 20 times if C wins. Assuming H.Economicus is a sincere voter,
+\begin{enumerate}[(a)]
+	\item  for whom will he vote?  How does he rank the remaining two candidates? 
+\item 	Could any candidate make him worse off than if the facility is not provided at all? 
+\end{enumerate}
+Prove your answers.
+\end{prob}
+\begin{ans}[Additional 2] 
+Suggested by Akihisa Kato, for the case candidate $i$ wins where $i=A,B,C$,
+\begin{itemize} 
+	\item the price is $ \p^A = (5, p_2) $ with corresponding Marshall demand function $\x_*^A (\p^A,y) = (10, x_2^A)$ and budget line $\p^A \cdot \x^A = y$;
+	\item the price is $ \p^B = (3, p_2) $ with corresponding Marshall demand function $\x_*^B (\p^B,y -20 ) = (15, x_2^B)$ and budget line $\p^B \cdot \x^B = y - 20$;
+	\item the price is $ \p^C = (2, p_2) $ with corresponding Marshall demand function $\x_*^C (\p^C,y - 40 ) = (20, x_2^C)$  and budget line $\p^C \cdot \x^C = y - 40$,
+	\end{itemize}
+where we put price $p_2$ the same for $i=A,B,C$ but suggested by Akihisa Kato, $x_2^i$ definitely differ and represents exogenous variables (However, personally, I think they are all zero);  $y$ is the income.
+
+Preferred preference implies
+\begin{itemize}
+	\item under $\p^A$, $\p^A\cdot \x_*^A \le \p^A \cdot \x_*^B$ holds and there is nothing about WARP here;
+	\item under $\p^B$, $\x_*^A$ could have been chosen but were not; then when $\x_*^A$ is chosen, he cannot afford $\x_*^B$: that is WARP, 
+	$$\p^B \cdot \x_*^B \le \p^B \cdot \x_*^A \xLongrightarrow{\text{WARP}}\p^A \cdot \x_*^B > \p^A \cdot \x_*^A;$$
+	\item under $\p^C$, $\x_*^A, \x_*^B$ could have been chosen but was not; then when $\x_*^A$ or $\x_*^B$ is chosen, he cannot afford $\x_*^C$: that is WARP, $$\p^C \cdot \x_*^C \le \p^C \cdot \x_*^A \xLongrightarrow{\text{WARP}}\p^A \cdot \x_*^C > \p^A \cdot \x_*^A;$$
+	$$\p^C \cdot \x_*^C \le \p^C \cdot \x_*^B \xLongrightarrow{\text{WARP}}\p^B \cdot \x_*^C > \p^B \cdot \x_*^B . $$
+\end{itemize}
+
+\begin{enumerate}[(a)]
+	\item  \ul{ for whom will he vote? How does he rank the remaining two candidates?} Although I cannot make fully connection of this question to previous analysis from "Revealed preference", I think his preference is C>B>A.
+	\item \ul{ 	Could any candidate make him worse off than if the facility is not provided at all? } This is suggested by Qiaoyi Wang as well as Akihisa Kato that no candidate would make him worse off since (from the Marshall demand function's three budget lines)
+	\begin{itemize}
+		\item under $p^A$, $p^C \cdot \x^C = 80 > (40? = )\p^A \cdot \x^{NP}$, that is $\x^{NP}$ is affordable under $\p^A$;
+\item 		under $p^B$, $p^C \cdot \x^C<p^C \cdot \x^{NP}$, that is $\x^{NP}$ is affordable under $\p^B$;
+		\item under $p^C$, $p^C \cdot \x^C = > \p^C \cdot \x^{NP}$, that is $\x^{NP}$ is affordable under $\p^C$.
+	\end{itemize}
+\end{enumerate}
+\end{ans}
+
+\begin{prob}[4.20]
+A consumer’s demand for the single good x is given by $ x(p, y) = \frac{y}{p}$, where $p$ is the good’s price, and $y$ is the consumer’s income. Let income be $7$. Find the compensating variation for an increase in the price of this good from $x^0_1= 1$ to $x^1_1=  4$.
+\end{prob}
+
+\begin{ans}[4.20]
+	Suggested by Akihisa Kato, according to question 4.18, we consider the case $\eta (\x) \equiv \eta_0$. Hence
+\begin{eqnarray*}
+	- \Delta CS &= &\int_{y_0}^{CV+y_0} \exp\left( -\eta_0 \int^{\tau}_{y_0} \frac{d \xi} { \xi}\right)d\tau =  \int_{y_0}^{CV+y_0} \left(  \frac{y_0}{\tau}  \right)^{\eta_0}d\tau \\
+	&= &   \int_{1}^{\frac{CV}{y_0}+1}{\tau}^{ - \eta_0}d\tau  = \left\{\begin{array}{cc}
+ y_0 \ln \left( \frac{CV}{y_0}+1  \right), & \eta_0 = 1; \\ y_0 \frac{ \left( \frac{CV}{y_0}+1\right)^{1 - \eta_0} - 1 }{1-\eta_0},& \eta_0 \ne 1.
+	\end{array}\right.,
+\end{eqnarray*}
+or alternatively,
+\begin{equation}
+CV = \left\{\begin{array}{cc}
+y_0\exp\left(  - \frac{\Delta CS}{y_0} \right) - y_0, & \eta_0 = 1; \\ y_0 
+\left[ -\frac{\Delta CS}{y_0} (1-\eta_0) + 1 \right]^{1 - \eta_0} - y_0,& \eta_0 \ne 1.
+\end{array}\right. 
+\label{eq:CV and Delta CS}
+\end{equation}
+
+On the other hand, (4.27) implies 
+\begin{equation}
+\Delta CS = \int_{p_1}^{p_0}x(p,y_0)dp =  \int_{p_1}^{p_0}\frac{y}{p}dp = y_0 (\ln p_0 - \ln p_1).
+\label{eq:Delta CS}
+\end{equation}
+
+Substituting (\ref{eq:Delta CS}) into (\ref{eq:CV and Delta CS}), we obtain
+\begin{eqnarray*}
+CV & = & \left\{\begin{array}{cc}
+\frac{p_1y_0}{p_0}   - y_0, & \eta_0 = 1; \\ y_0 
+\left[ (\ln p_1 - \ln p_0) (1-\eta_0) + 1 \right]^{1 - \eta_0} - y_0,& \eta_0 \ne 1.
+\end{array}\right. \\
+& = &  \left\{\begin{array}{cc}
+21, \\ 7
+\left[ (1-\eta_0) \ln 2 + 1 \right]^{1 - \eta_0} -7 ,& \eta_0 \ne 1.
+\end{array}\right.
+\end{eqnarray*}
+which is the compensating variation.
+
+However, my first naive attempt (below) implies we should just focus on the case $\eta_0 = 1$ and the result is $CV = 21$.
+\end{ans}
+
+\begin{ans}[4.20, my first naive attempt] 
+	 In this case, indirect utility function is $v(p,y) = u\left(\frac{y}p\right)$ and expenditure function is $\dps e(p,U) = \min_{u\left( x \right) \ge U} px = p \cdot \inf u^{-1} (U)$. Hence 
+	 $$CV = e(p_1,v(p_0,y_0)) - y_0= e(4,u(7)) - 7 = 4 \inf u^{-1}\left(u (7)\right) - 7 \ge 4 \times 7-7= 21.$$
+ Suppose utility function $u$ is locally strictly increasing at point $x = $, then the  compensating variation (which is natural since Marshall demand function is a single point all the way.)
+\end{ans}
+
+\begin{ans}[Professor's proof] $\x^i$ corresponds to price $\p^i, i=0,1$ where $\p^0  = \left( 1, \p^0_{-1} \right), \p^1  = \left( 4, \p^0_{-1} \right)$. Observe that 
+	\begin{mdframed}
+\begin{claim}
+	For any $(\p, y)$, $\left( \frac{y}{p_1},\0_{n - 1} \right) $ is on the budget line, and hence, is the Marshallian demand function, i.e. $\x^M (\p, y) = \left( \frac{y}{p_1},\0_{n - 1} \right)$.
+\end{claim}
+	\end{mdframed}
+
+As a result, $\x^M (\p^0, y= 7 ) = \left( \frac{7}{p_1^0},\0_{n - 1} \right) = (7,\0_{n-1})$; then consider expenditure minimization problem:
+\begin{eqnarray*}
+&& \min \p\cdot \x ~ s.t. ~u( \x ) \ge u\left(\x^M \left(\p^0, y=7 \right) \right) \\
+& = & p_1 x^M_1 \left(\p^0, y=7 \right) = \frac{p_1  y}{p_1^0} = e\left( \p , v\left( \p^0, y\right) \right) = e\left( \p , u\left(\x^M\left( \p^0, y\right) \right)\right),
+\end{eqnarray*}
+and then $CV =e\left( \p^1 , v\left( \p^0, y\right) \right)  - e\left( \p^0 , v\left( \p^0, y\right) \right) =  \frac{\left(p_1^1 - p_1^0 \right) y}{p_1^0} \xlongequal[y = 7]{p_1^1 = 4,p_1^0 = 2} 21$.
+\end{ans}
+
+\section{HW4}
+\begin{prob}[2.19]
+	Axiom G3 asserts the existence of an indifference probability for any gamble in $\cG$. For a given gamble $g \in \cG $, prove that the indifference probability is unique using G4.
+\end{prob}
+\begin{ans}[2.19]  Suppose $g \sim \left(\alpha \circ a_1 , (1-\alpha)\circ a_n \right)$, $g \sim \left(\beta \circ a_1 , (1-\beta)\circ a_n \right)$ for two probabilities $\alpha ,\beta \in [0,1]$; hence 
+\begin{eqnarray*}
+\left(\alpha \circ a_1 , (1-\alpha)\circ a_n \right) \succeq  \left(\beta \circ a_1 , (1-\beta)\circ a_n \right), \\
+ \left(\beta \circ a_1 , (1-\beta)\circ a_n \right) \succeq  \left(\alpha \circ a_1 , (1-\alpha)\circ a_n \right).
+\end{eqnarray*} According to Axiom $\cG_4$, we know $\alpha \ge \beta, \beta \ge \alpha \Rightarrow \alpha = \beta$, that is, uniqueness is verified.
+\end{ans}
+
+\begin{prob}[2.24]
+	Reconsider Example 2.7 and show that the individual will less than fully insure if the price per unit of insurance, $ \rho $, exceeds the probability of incurring an accident, $ \alpha $.
+\end{prob}
+\begin{ans}[2.24] Becasue he is an expected utility maximiser, he will choose that amount of insurance $x$ to maximize his expected utility
+	$$\alpha u(w_0 - \rho x - L + x) + (1-\alpha) u(w_0 - \rho x).
+	$$
+	
+	Differentiating the above with respect to $x$ yields
+	$$
+	\alpha (1- \rho )\left[ u'(w_0 -  \rho x - L + x) - u' (w_0 - \rho x)\right] - ( \rho - \alpha  ) u' (w_0 - \rho x).
+	$$
+	
+	Under the assumption $ \alpha < \rho (<1)$, we know the second term to minus is positive; for $x\ge L$, since $u''<0$, first term happens to be non-positive, hence the first derivative will always be negative -- the local maximum $x^* \in (0,L)$. As a result, we finish our proof. 
+
+\end{ans}
+\begin{prob}[2.26] Let $u(w) = - (b - w)^c(, w <  	b)$. What restrictions on $w, b, c$ are required to ensure that $u(w)$ is strictly increasing and strictly concave? Show that under those restrictions, $u(w)$ displays increasing absolute risk aversion.
+\end{prob}
+\begin{ans}[2.26] We need $c> 1$ to ensure $u$ being strictly increasing and strictly concave (just check first derivative being positive and second derivative negative).
+	
+	Under this condition, Pratt's measure $R(w) = -\frac{u''(w)}{u'(w)} = \frac{-(1-c)c(b-w)^{c-2}}{c(b-w)^{c-1}} = \frac{c-1}{b-w} $ which increases for $w <b$.
+\end{ans}
+\begin{prob}[2.27]
+	Show that for $ \beta > 0$, the VNM utility function $u(w) = \alpha + \beta \ln(w)$ displays decreasing absolute risk aversion.
+\end{prob}
+\begin{ans}[2.27] Pratt's measure 
+	$R(w) = -\frac{u''(w)}{u'(w)} = \frac{- \left( - \frac{\beta}{w^2} \right)}{\frac{\beta}{w}} = \frac1w$ which increase with respect to wealth $w$.
+\end{ans}
+
+\begin{prob}[2.36] Let $S_i$ be the set of all probabilities of winning such that individual i will accept a gamble of winning or losing a small amount of wealth, $h$. Show that for any two individuals $i$ and $j$, where $R^i_a(w) > R^j_a(w), \forall w$, it must be that $S_i \subset S_j,\forall w$. Conclude that the more risk averse the individual, the smaller the set of gambles he will accept.
+\end{prob}
+
+\begin{ans}[2.36] 
+	\begin{itemize}
+		\item For any $s \in S_i$, then gamble $g_s \doteq \left( s\circ (w+h), (1-s)\circ (w-h) \right) \succeq_i w$. In order to show $S_i \subset S_j$, it suffices to show $g_s \succeq_j w$. By Pratt's theorem, 
+	$$R_a^i(w) > R_a^j(w), \forall w \Rightarrow \preceq_i\text{ is more risk averse than }\preceq_j,$$
+	and hence by definition of "more risk averse", we know $g_s \succeq_j w$. As a result, $S_i \subset S_j$ due to arbitrariness of $s \in S_i$.
+	
+	\item Furthermore, Akihisa Kato also suggests us verifying that $S_i \subsetneq S_j (S_i \ne  S_j),\forall w$.
+	
+	Suppose not, that is, for certain $w_0$, $S_i = S_j $ $\Rightarrow $ for any $s \in S_j$, we have $s \in S_i $
+	
+	 $\Rightarrow $ for any probability $s \in[0,1]$ if $g_s \succeq_j w_0$, we have $g_s \succeq_i w_0$.
+	 
+	 $\Leftrightarrow $for any $s \in[0,1]$, if $s \ge \frac{u_j(w_0 ) - u_j(w_0 -h)}{u_j(w_0+h) - u_j(w_0 -h)}$, then $s\ge \frac{u_i(w_0 ) - u_i(w_0 -h)}{u_i(w_0+h) - u_i(w_0 -h)},$
+	 (where we suppose $u_i'>0,u_j'>0$.)
+	 
+	 	 $\Leftrightarrow $  $     -  \frac{u_i(w_0+h) - u_i(w_0 -h)}{u_i(w_0 ) - u_i(w_0 -h)} \le  - \frac{u_j(w_0+h) - u_j(w_0 -h)}{u_j(w_0 ) - u_j(w_0 -h)}$. Due to arbitrariness of $h>0$ (small amount of wealth), we know $R^i_a(w_0 )\le R^j_a(w_0)$, contradictory to the assumption that $R^i_a(w_0 )>  R^j_a(w_0)$.
+	\end{itemize}
+
+To conclude, we have  $R^i_a(w) > R^j_a(w), \forall w$ implies $S_i \subsetneq S_j$.
+	
+\end{ans}
+\begin{prob}[6 , additional] My VNM utility function is strictly increasing and satisfies $ u(0) = 0, u(\$300) = \frac12$
+	and $ \dps \lim_{w \to \infty} u(w) = 1$. Consider a gamble $g = \left( \frac12\circ 0, \frac12 \circ x \right)$; where x is a prize in
+	dollars. How large must $x$ be in order for me to prefer this gamble to one in which I receive \$400 for sure?
+\end{prob}
+
+\begin{ans}[6 , additional] Just need $x$ such that $\frac12 u(0) + \frac12 u(x) \ge u(\$ 400) \Leftrightarrow  u(x) \ge 2 u(\$ 400) > 2 u(\$ 300) = 1$ where inequality $>$ is due to $u$ being strictly increasing.
+	
+	However, $u(x) \le 1$, a contradiction, which means it is impossible to prefer $g$ to one in which \$ 400 is received.
+\end{ans}
+
+\begin{prob}[Q7, additional]
+\end{prob}
+
+\begin{ans}[Q7, additional] The gamble $g = w + \tilde r x -x $ and risk averse implies her expected utility function to be $ u(g) = \bbE u \left( w + \tilde r x -x \right) <  u(\bbE g ) = u(w)$, which means $g \prec w $, that is, the consumer will not invest in this asset.
+\end{ans}
+
+\begin{prob}[Q8, additional]When the consumer has non-random wealth w, define his risk premium, $\pi(w)$, for
+	a gamble $\tilde x$ by
+\begin{equation}	\bbE u(\tilde x + w) = u (\bbE \tilde x + w  - \pi (w)) . \label{eq:risk premium initial}
+\end{equation}
+	Thus, the consumer is willing to pay at most $\pi(w)$ to exchange the gamble for
+	its expected value $\bbE\tilde x$. Assume $u \in \cC^2$; with $u' > 0$ and $u'' < 0$: Show that if $u$
+	exhibits DARA, then the risk premium decreases in wealth. 
+\end{prob}
+\begin{rem}
+	As a person becomes wealthier, he less cares about the gamble $\tilde x$.
+\end{rem}
+\begin{ans}[Q8, additional] It suffices to show for any $w_1 >w_2$, we have $ \pi(w_1) < \pi (w_2)$.
+
+For any $w_1 >w_2$, just define utility functions $u_{w_i}(x) \doteq u(x+w_i), i =1,2$. In this case, (\ref{eq:risk premium initial}) turns into
+$$
+\bbE u_{w_i}(\tilde x ) = u_{w_i} (\bbE \tilde x    - \pi (w_i)) . 
+$$
+
+ DARA as well as the fact $u'>0, u''<0$, implies $R_{u_{w_1}}(w) \le R_{u_{w_2}}(w)$. Together with Pratt's theorem and definition 2.5 of the textbook, we have relations of two certainty equivalences:
+$$ \bbE \tilde x - \pi(w_1 ) = c(\tilde x,u_{w_1 }) \ge c(\tilde x,u_{w_2}) = \bbE \tilde x - \pi(w_2),$$
+ for any gamble $\tilde x \in \cG$; hence, $  \pi(w_1) \le \pi(w_2) $.
+	
+To conclude, for any $w_1 > w_2$, we have $\pi (w_1) \le \pi(w_2)$, that is, risk premium $\pi(w)$ decreases in wealth $w$.
+	
+%Since $u'>0$,  we have $\pi (w) = \bbE\tilde x +  w - u^{-1} \left(  \bbE u(\tilde x + w ) \right)$, hence 
+%	$$
+%	\pi ' (w ) = 1 - \frac{\bbE u' \left(\tilde x + w \right) }{ u' \left( u^{-1} \left( \bbE u (\tilde x + w ) \right)\right)}.
+%	$$
+\end{ans}
+%\begin{rem}
+%	Akihisa suggests that $c(\tilde x,u_{w_i})= \bbE \tilde x - \pi(w_i) + w_i$; after second thought, I use my version instead of his version.
+%\end{rem}
+
+
+\begin{prob}[Q9, additional] \begin{enumerate}[(a)]
+		\item  Does $x^*$ increase or decrease in $w$, or can it do either?
+		\item Is $x^*$ always positive, always negative or neither?
+		\item Sign the derivative $x_{ \theta}^*$.
+	\end{enumerate}
+	
+\end{prob}
+
+\begin{ans}[Q9, additional]
+		
+	In order to study property of $x^*$, we set derivative of $f(x;w,\theta)$ to be zero, that is,
+\begin{equation}
+\label{eq:first derivative vanishes}
+	\frac{\partial f}{\partial x} (x^*; w, \theta) =  - u'(w- x^*) +\theta  \bbE\left[ v' (\theta\tilde r x^*) \tilde r\right] =0,
+	\end{equation}
+	where we swap the integral operator $\int_{\Reals}  d\tilde r$ and (partial) derivative operator $		\frac{\partial}{\partial x}$. 	
+	\begin{enumerate}[(a)]
+		\item \underline{$x^*$ increases with respect to $w$.} 
+		
+		In order to see this, notice 
+		\begin{itemize}
+			\item 
+increase of $w$ leads to decrease $-u'(w-x)$, hence, $	\frac{\partial f}{\partial x} (x; w, \theta)$ decreases; 
+\item on the other hand, as $x$ increases, $-u'(w-x)$ increases consequentially; meanwhile, $\frac{\partial  \bbE\left[ v' (\theta\tilde r x) \tilde r\right] }{\partial x}  = \theta \bbE\left[ v'' (\theta\tilde r x^*) \tilde r^2 \right] <0$ due to the fact $v''<0$ -- $\theta \bbE\left[ v' (\theta\tilde r x) \tilde r\right] $ increases as well.
+ 
+		\end{itemize}
+As a result, in order to balance (\ref{eq:first derivative vanishes}), $x$ need to increase while $w$ increases -- that is, $x^*$ increases with respect to $w$.
+		\item \underline{$x^*$ is always negative.} 
+		
+		Suppose not, that is, $x^*$ is nonnegative around certain $x_0^*$. One observation is that: since $v' >0,v'' <0$, we have 
+		\begin{eqnarray*}
+			\bbE\left[ v' (\theta\tilde r x^*) \tilde r\right] & = & \int_{\Reals } v' (\theta\tilde r x^*) \tilde r d\tilde r  \xlongequal{y \leftarrow \theta\tilde r x^*}   (\theta x^*)^{-2}  \int_{\Reals } v' (y) y dy   \\
+			& = &  (\theta x^*)^{-2}\left[   \int_{- \infty } v' (y) y dy +  \int_{0 }^{ \infty } v' (y) y dy\right]\\
+			& \le&  (\theta x^*)^{-2}\left[   \int_{- \infty }^0 v' (0) y dy +  \int_{0 }^{ \infty } v' (0) y dy\right] = v'(0) \bbE  \tilde r  = 0,
+		\end{eqnarray*} due to the fact that $v' (\theta\tilde r x^*_0 ) $ is nondecreasing with respect to $\tilde r$. Together with the fact that $-u' <0$, we get $\frac{\partial f}{\partial x}(x^*_0; w,\theta) <0 $, contradictory to (\ref{eq:first derivative vanishes}).
+		
+		As a result, $x^*$ is always negative.
+		\item \underline{$\frac{\partial x^*}{ \partial \theta} >0$ (the sign is positive).}
+		
+		Treating $x^* = x^*(w, \theta)$ a function of $w, \theta$, chain rule of (\ref{eq:first derivative vanishes}) implies 
+		$$
+		- u''(w - x^*) \frac{\partial x^*}{ \partial \theta} = \bbE\left[ v' (\theta\tilde r x^*) \tilde r\right] + \theta \bbE\left[ v'' (\theta\tilde r x^* ) \tilde r^2 \right] \left(x^* + \theta \frac{\partial x^*}{ \partial \theta} \right),
+		$$
+		or alternatively,
+				$$
+  \frac{\partial x^*}{ \partial \theta} =\frac{ \bbE\left[ v' (\theta\tilde r x^*) \tilde r\right] + \theta  \bbE\left[ v'' (\theta\tilde r x^*) \tilde r^2\right] x^*}{	- u''(w - x^*) -  \theta^2  \bbE\left[ v'' (\theta\tilde r x^* ) \tilde r ^2\right] }. 
+		$$ 
+		\begin{itemize}
+			\item As for enumerator, $\bbE\left[ v' (\theta\tilde r x^*) \tilde r\right]  \ge 0$ due to the similar argument appeared in (b); $\bbE\left[ v'' (\theta\tilde r x^*) \tilde r^2\right] x^* >0$ due to the fact $v''<0, \bbE \tilde r^2 >0$ and (b)'s result $x^* <0$;
+			\item As for denominator,  $- u''(w - x^*) -  \theta^2  \bbE\left[ v'' (\theta\tilde r^2 x^* ) \tilde r \right] > 0$ due to the fact $u''<0, v''<0$.
+		\end{itemize}
+	Consequentially, $  \frac{\partial x^*}{ \partial \theta} >0$.
+	\end{enumerate}
+\end{ans}
+\section{HW5}
+\begin{prob}[JR 3.4] Suppose the production function $F(\x)$ is homothetic so that $F(\x ) = (f \circ g) (\x)$ for some strictly increasing function $f$ and some linear homogeneous function $g$. Take any point $\x^0$ on the unit isoquant so that $F \left(\x^0\right) = 1$. Let $\x^1$ be any point on the ray through $\x^0$ and suppose that $F(\x^1) = y$ so that $\x^1$ is on the $y$-level isoquant. Show that $\x^1 = t^*\x^0$, where $t^* = \frac{f^{-1}(y)}{f^{-1}(1)}$.
+\end{prob}
+\begin{ans}[JR 3.4] Since $\x^1$ is on the ray through $\x^0$, we can assume $\x^1 = t \x^0$, which means
+	$$
+	y = F\left( \x^1  \right) = \left( f \circ g\right) ( t \x^0) =  f \left(t g (  \x^0) \right);
+	$$
+	since $f$ is strictly increasing, above is equivalent to 
+	$$	f^{-1}(y) = t g (  \x^0)  \xlongequal{g = f^{-1}\circ F} t \left(f^{-1} \circ F\right) (\x^0) = t f^{-1}(1),$$
+hence we finish our proof.
+\end{ans}
+
+\begin{prob}[Q2]
+\end{prob}
+\begin{ans} Uniqueness of the solution $\x^H$ is assumed same situation in (/actually a special case of) part 1 of Theorem 3.4.
+	Furthermore, just notice
+	\begin{eqnarray*}
+		c(\w,y) & = & \min_{\substack{ \x \in \Reals_+^n \\ F(\x)  \ge y}} \w \cdot \x \xlongequal[t \leftarrow y^{ - \frac1{\alpha}}]{F(t\x) = t^{\alpha} F(x)} \min_{\substack{ \x \in \Reals_+^n \\ F\left(  y^{ - \frac1{\alpha}}\x\right)  \ge 1}} \w \cdot \x \\
+		& = & y^{  \frac1{\alpha}} \min_{\substack{ \z \in \Reals_+^n \\ F\left(  \z \right)  \ge 1}} \w \cdot \z  = y^{  \frac1{\alpha}}c(\w,1).
+	\end{eqnarray*}
+Notice above argument also implies $y^{  \frac1{\alpha}}\x^H \left(\w,1 \right)$ is a feasible for $\dps \min_{\substack{ \x \in \Reals_+^n \\ F(\x)  \ge y}} \w \cdot \x$; on the other hand, $\w \cdot y^{  \frac1{\alpha}}\x^H \left(\w,1 \right) = y^{  \frac1{\alpha}}\w\cdot \x^H \left(\w,1 \right) = y^{  \frac1{\alpha}} c \left(\w,1 \right)$. Hence, $y^{  \frac1{\alpha}}\x^H \left(\w,1 \right) = \x^H \left(\w, y \right)$.
+
+\end{ans}
+\begin{prob}[JR 3.25] Suppose the firm produces output $y > 0$. Show that $mc(y) = \frac{w_i}{MP_i}$ for every input $i$ the firm uses, and $mc(y) \le \frac{w_j}{MP_j}$ for every input $j$ the firm does not use.
+\end{prob}
+\begin{ans}[JR 3.25]
+	FOCs of $\dps \max_{\x \in \Reals_+^n} \left(p f(\x) - \w \cdot \x\right) $ are $p \overrightarrow{MP}^T = p \nabla f(\x^*) \le \w^T$, where $\left[\nabla f(\x^*) \right]^T= \overrightarrow{MP}$, the marginal products.
+	
+	On the other hand, FOC of $\dps \max_{\substack{\x \in \Reals_+^n \\ f(\x) \ge y}} \left(py - \w \cdot \x\right) = \max_{y \ge 0}\left( py - c(y,\w)\right) $ is
+	$p  = \frac{\partial c(y,\w)}{\partial y} = mc(y,\w) $.
+	
+	Combine the two, we obtain $ mc(y,\w) \le \frac{w_j}{MP_j}, \forall j \in[n]$. 
+	
+	Furtherly, once $x_i >0$ for certain $i$ (that is, input i that the firm uses), $px_i = w_i$ (; otherwise, we can find a direction to furtherly increase profit function). Consequentially, $mc(y,\w) = \frac{w_i}{MP_i}$ for the input i that the firm uses.
+\end{ans}
+
+\begin{prob}[JR 3.34] Translog cost function is 
+	 \begin{equation}
+	\ln c ( y; \w) = \alpha_0 + \sum_{j =1 }^n \alpha_ i \ln w_i + \frac12 \begin{bmatrix}
+\ln w_1  \\ \vdots \\ \ln w_n
+	\end{bmatrix}^T (\gamma_{ij})_{n \times n } \begin{bmatrix}
+	\ln w_1  \\ \vdots \\ \ln w_n
+	\end{bmatrix} + \ln y.
+	\end{equation}
+	
+	\begin{enumerate}[(a)]
+		\item  What restrictions on the parameters $\alpha_i$ are required to ensure homogeneity with respect to $w$?
+		\item For what values of the parameters does the translog reduce to the Cobb-Douglas form?
+		\item Show that input shares in the translog cost function are linear in the logs of input prices and
+		output.
+	\end{enumerate}
+\end{prob}
+\begin{ans}[JR 3.34] \begin{enumerate}[(a)]
+		\item \ul{What restrictions on the parameters $\alpha_i$ are required to ensure homogeneity?} 
+		
+		I think it is talking about homogeneity of degree $\beta$:
+We need restriction $\sum_{i=1}^n \alpha_i = 1$ 
+		where just notice the degree of homogenity is naturally
+	 $1$.
+		\item \ul{For what values of the parameters does the translog reduce to the Cobb-Douglas form?}
+		
+		 $\gamma_{ij}=0$ (with or without $\sum_{j =1 }^n \alpha_j=1$ depending on definition of Cobb-Douglas form).
+		
+At first glimpse, we cannot have cross-term $\ln w_i \ln w_j$, that is, it is necessary to have $\gamma_{ij}=0$. Equipped with this, we get $c(\w,y) = \alpha _0 y \prod_{j = 1}^n w_j^{\alpha_j}$ and if we treat output $y$ as fixed, this has already bee in Cobb-Douglas form: $f(\x) = A\prod_{j =1}^n x_i^{\lambda_i}$ ($\lambda_i$ is an elasticity parameter for good i) according to English wikipedia; there is a possibility that we require $\sum_{j=1}^n \lambda_i = 1$ (refers to exercise 1.54) which implies $\sum_{j =1 }^n \alpha_j=1$ .
+		\item \ul{Show that input shares in the translog cost function are linear in the logs of input prices and output.} 
+		
+		Notice $\frac{ \frac{\partial c}{ \partial w_i } }{c} = \frac{\alpha_i}{w_i } + \frac{\sum_{j=1}^n \gamma_{ij}  \ln w_j }{w_i}$; by Shephard's lemma we know 
+\begin{eqnarray*}
+&&  x^H_i (w,y)= \frac{\partial c}{ \partial w_i } = \frac{c}{w_i}  \left(\alpha_i + \sum_{j=1}^n \gamma_{ij}  \ln w_j \right)\\
+& \Rightarrow & s_i (\w,y) = \frac{w_i x^H_i(\w,y)}{c(\w,y)} =\alpha_i + \sum_{j=1}^n \gamma_{ij}  \ln w_j.
+\end{eqnarray*}
+which is linear in the logs of input prices and (actually does not involve) output.
+
+\begin{rem}
+	Another term is Hotelling's lemma.
+\end{rem}
+	\end{enumerate}
+\end{ans}
+
+
+\begin{prob}[JR 3.36] Derive the cost function for the two-input, constant-returns, Cobb-Douglas technology. Fix one input and derive the short-run cost function. Show that long-run average and long-run marginal cost are constant and equal. Show that for every level of the fixed input, short-run average cost and long-run average cost are equal at the minimum level of short-run average cost. Illustrate your results in the cost-output plane.
+\end{prob}
+\begin{ans}[JR 3.36] Refers to example 3.6 where instead of solving max-profit problem
+$\dps
+	\max_{\substack{y,\x \\ x_1^{\alpha}x_2^{1- \alpha} \ge y }}\left[py - \w\cdot \x\right]
+$, we solve (a related) min-cost problem
+$$ c(\w , y) \doteq	\min_{\substack{\x\ge \0_2 \\ x_1^{\alpha}x_2^{1- \alpha} \ge y}}   \w\cdot \x ,   \Leftrightarrow -c(\w, y) = \max_{\substack{\x\ge \0_2 \\ x_1^{\alpha}x_2^{1- \alpha} \ge y}}  (-\w\cdot \x)  .
+$$
+	Notice I refers to example 3.6, so my production function is $C_0x_1^{\alpha} x_2^{1 - \alpha} $ with constant coefficient $C_0=1$.
+\begin{itemize}
+	\item \ul{Derive the cost function for the two-input, constant-returns, Cobb-Douglas technology.}
+	
+
+	
+	Same as the way we introduce Lagrangian in (1.6), we introduce Lagrangian
+	$$
+	\cL (\x,\lambda) = - \w\cdot \x - \lambda \left( x_1^{\alpha} x_2^{1 - \alpha} - y\right),
+	$$
+Without loss of generality, we assume $y>0$, hence $x_1,x_2 >0$, that is, we are talking about interior solution all the way, which means $=$ holds in addition to $\le $ in FOC. By denoting $\tilde \x$ to be the optimal solution, first order condition leads to 
+	$$
+	\w = \lambda \tilde x_1^{\alpha}\tilde x_2^{1- \alpha} \begin{bmatrix}
+	\frac{\alpha}{\tilde  x_1} \\ 	\frac{ 1 - \alpha}{\tilde  x_2} 
+	\end{bmatrix},\tilde  x_1^{\alpha} \tilde x_2^{1 - \alpha} = y \Rightarrow \tilde x_1 = y \left( \frac{\alpha}{1 - \alpha}\frac{w_2}{w_1} \right)^{ 1 - \alpha}, \tilde x_2 = y \left( \frac{1 - \alpha}{\alpha}\frac{w_1}{w_2} \right)^\alpha,
+	$$
+	which consequentially implies $c(y; \w ) =\w \cdot \tilde \x = y \left(\frac{w_1}{\alpha}\right)^\alpha \left(\frac{w_2}{1 - \alpha }\right)^{1 - \alpha}$.
+	\item \ul{Fix one input and derive the short-run cost function. } 
+	
+By fixing $x_2$, we have 
+	$$
+	sc(  y; \w, x_2) \doteq w_2x_2 +	\min_{\substack{x_1 \ge 0 \\ x_1 \ge y^{\frac1{\alpha}} x_2^{ - \frac{  1- \alpha}{\alpha} } } }   w_1 x_1  = w_2 x_2  + w_1 y^{\frac1{\alpha}} x_2^{ - \frac{ 1- \alpha }{\alpha} }.  
+	$$
+	
+		Similarly by fixing $x_1$, we have 
+	$$
+	sc(  y; \w, x_1) \doteq w_1x_1 +	\min_{\substack{x_2 \ge 0 \\ x_2 \ge y^{\frac1{1 - \alpha}} x_1^{\frac{- \alpha}{1 - \alpha} } } }   w_2x_2  = w_1x_1  + w_2 y^{\frac1{1 - \alpha}} x_1^{ - \frac{ \alpha}{1 - \alpha} }.  
+	$$
+	\item \ul{Show that long-run average and long-run marginal cost are constant and equal.}
+	
+	According to definition in 3.43, long-run average cost is 
+	$$lac(y;\w) \doteq \frac{c(y;\w)}y = \frac{y \left(\frac{w_1}{\alpha}\right)^\alpha \left(\frac{w_2}{1 - \alpha }\right)^{1 - \alpha}}y =\left(\frac{w_1}{\alpha}\right)^\alpha \left(\frac{w_2}{1 - \alpha }\right)^{1 - \alpha }, $$ and long-run marginal cost is 
+	$$lmc(y; \w )\doteq \frac{dc( y; \w )}{dy} = \frac{d}{dy }\left[y \left(\frac{w_1}{\alpha}\right)^\alpha \left(\frac{w_2}{1 - \alpha }\right)^{1 - \alpha}\right] = \left(\frac{w_1}{\alpha}\right)^\alpha \left(\frac{w_2}{1 - \alpha }\right)^{1 - \alpha}.$$
+	
+
+	\item \ul{Show that for every level of the fixed input, short-run average cost and long-run average cost are equal at the minimum level of short-run average cost.} 
+
+	Notice $\frac{1-\alpha}{\alpha} >0$, hence
+\begin{eqnarray*}
+&& \min_{ x_2 \ge 0}		sac(y; \w , x_2) \\
+& = & \frac1y \min_{ x_2 \ge 0} sc(\w  ; y, x_2)   = \frac1y  \min_{ x_2 \ge 0} \left[w_2 x_2  + w_1 y^{\frac1{\alpha}} x_2^{ - \frac{ 1- \alpha }{\alpha} }\right] \\
+& \xlongequal{ x_2 \leftarrow  \left( \frac{1 - \alpha }{ \alpha} \frac{w_1}{w_2 } \right)^{\alpha } y } & \frac1y \cdot w_1^{\alpha }w_2^{1 - \alpha } y \left[\left( \frac{1 - \alpha}\alpha \right)^\alpha + \left(\frac{\alpha }{1 - \alpha}\right)^{1  - \alpha} \right] \\
+& = &  \left(\frac{w_1}{\alpha }\right)^{\alpha } \left(\frac{w_2}{1 - \alpha}\right)^{1 - \alpha }, 
+\end{eqnarray*}
+\begin{eqnarray*}
+	&&\min_{ x_1 \ge 0}sac( y;\w, x_1) \\
+	&= &\frac1y \min_{ x_1 \ge 0} sac( y;\w , x_1) = \frac1y \min_{ x_1 \ge 0} \left[w_1x_1  + w_2 y^{\frac1{1 - \alpha}} x_1^{ - \frac{ \alpha}{1 - \alpha} }\right] \\
+	& \xlongequal{x_1 \leftarrow \left(\frac{\alpha}{1 - \alpha }\frac{w_2}{2_1}\right)^{1 - \alpha } y} & \frac1y \cdot w_1^{\alpha }w_2^{1 - \alpha } y \left[\left( \frac{1 - \alpha}\alpha \right)^\alpha + \left(\frac{\alpha }{1 - \alpha}\right)^{1  - \alpha} \right] \\
+	& = &  \left(\frac{w_1}{\alpha }\right)^{\alpha } \left(\frac{w_2}{1 - \alpha}\right)^{1 - \alpha }. 
+\end{eqnarray*}
+%	and
+%	$$
+%	smc(w_1,w_2 , y; x_1) =\frac{d}{dy} \left[ w_2 y^{\frac1{1 - \alpha}} x_1^{ - \frac{ \alpha}{1 - \alpha} }\right] =  \frac{w_2 (y  x_1)^{ - \frac{ \alpha}{1 - \alpha} } }{1 - \alpha} .
+%	$$
+
+	\item \ul{Illustrate your results in the cost-output plane.}
+	
+	We fix prices $\w$ and denote $c_0 = \left(\frac{w_1}{\alpha }\right)^{\alpha } \left(\frac{w_2}{1 - \alpha}\right)^{1 - \alpha }$.
+	
+	
+	\newpage
+\end{itemize}
+\end{ans}
+
+\begin{prob}[Q6, focus on $n=2$]A competitive firm has a $\cC^2$ production function $f(\x)$ for which, at any $ \x \in \Reals^n_+$, $\nabla f(\x) \gg \0_{n}^T$\footnote{I prefer writing $\nabla f(\x)$ lies in dual space, that is, $\nabla f(\x)$ is a row vector.} and $J(f)(\x) = [f_{ij}(\x)] \prec \0_{n \times n}$ (i.e. is negative definite). Let $\x^*(p,w)$ and $y^*	(p,w)$ be
+	the firm's demand and supply functions. Using the first-order conditions for profit maximization, show that at any $(p,\w) \gg \0_{1+n}$ for which the firm's input demands are positive, we have
+\begin{enumerate}[(a)]
+	\item 	$\frac{\partial y^* }{\partial p} > 0$ (Strict Law of Supply),
+\item $\frac{\partial x_i^*}{\partial p} > 0$ for certain $i \in [n]$, and
+\item  $\frac{\partial x_i^*}{\partial w_i} < 0$ for all $i \in [n]$ (Strict Law of Demand).
+\end{enumerate}
+\end{prob}
+\begin{ans}[Q6] First order conditions for max-profit problem (3.6, 3.7) 
+	$$ \pi(p, \w) = \max_{\substack{(\x, y ) \in \Reals_+^3 \\ f(\x) \ge y}} \left[ p y - \w \cdot \x \right]  =  \max_{\x \in \Reals_+^n} \left[ p f(\x) - \w \cdot \x \right], $$ are (where we assume $(p, \w) \gg \0_{1+n}$ and then $\x^* (p,\w)$ is an interior point which means $=$ holds in addition to $\le $ in FOC)
+\begin{equation}  p 	\nabla_{\x} f(\x^*)  = -\w^T, \Leftrightarrow p\frac{\partial f(\x^*)}{\partial x_i} =  w_i,i \in [n]; \label{eq:FOC for profixt max}
+\end{equation}
+ notice 
+ \begin{equation}y^*(p,\w) = f\left(\x^* (p, \w) \right).\label{eq:explicit expression of y*}
+ \end{equation}
+	\begin{enumerate}[(a)]
+		\item 
+		
+		
+		By taking derivative w.r.t. $p$ on (\ref{eq:FOC for profixt max}), we obtain
+\begin{equation} \nabla_{\x} f(\x^*) + p \left[\frac{ \partial \x^*}{\partial p}\right]^T J(f) \left( \x^* \right)  = \0_n^T  \Leftrightarrow \frac{\partial f(\x^*)}{\partial x_i}   +p \sum_{j=1}^n \frac{\partial^2 f(\x^*)}{\partial x_i \partial x_j}\frac{\partial x_j^*}{\partial p}  = 0,i \in [n]; \label{eq:derivative p on FOC}
+\end{equation}
+		hence 
+		\begin{eqnarray*}
+		\frac{\partial y^*}{\partial p} & \xlongequal{\text{(\ref{eq:explicit expression of y*})}} &  \nabla_{\x} f(\x^*) \frac{\partial x^*}{\partial p} = \sum_{i = 1}^n \frac{\partial f(\x^*)}{\partial x_i} \frac{\partial x_i^*}{\partial p} \\ &\xlongequal{\text{(\ref{eq:derivative p on FOC})}} &- p 	 \sum_{i = 1}^n\sum_{j=1}^n \frac{\partial x_i^*}{\partial p} \frac{\partial^2 f(\x^*)}{\partial x_i \partial x_j}\frac{\partial x_j^*}{\partial p}   =  - p \left[\frac{ \partial \x^*}{\partial p}\right]^T J(f) \left( \x^* \right) \frac{ \partial \x^*}{\partial p} > 0,
+		\end{eqnarray*}
+	where last strict inequality is due to $J(f)(\x) \prec \0_{n \times n}$ and 
+\begin{mdframed}
+		\begin{lem}
+		$\left[\frac{ \partial \x^*}{\partial p}\right]^T J(f) \left( \x^* \right) =  - \frac1p \nabla_{\x} f(\x^*) \ne \0_n^T$ implies $\left[\frac{ \partial \x^*}{\partial p}\right]^T J(f) \left( \x^* \right) \frac{ \partial \x^*}{\partial p} < 0$.
+	\end{lem}
+\end{mdframed}
+\begin{proof}
+		Suppose not, that is, $\left[\frac{ \partial \x^*}{\partial p}\right]^T J(f) \left( \x^* \right) \frac{ \partial \x^*}{\partial p} = 0$, then $\frac{ \partial \x^*}{\partial p} =\0_n$ or $\frac{ \partial \x^*}{\partial p} \ne \0_n \in \Reals^n$ is an eigenvector of $J(f) \left( \x^* \right) $.
+		
+		First case definitely leads to $\left[\frac{ \partial \x^*}{\partial p}\right]^T J(f) \left( \x^* \right) = \0_n^T$; namely, first case is impossible. In second case, we can still get $\left[\frac{ \partial \x^*}{\partial p}\right]^T J(f) \left( \x^* \right) = \0_n^T$; namely, second case is impossible.
+		
+		As a result, we proved the lemma.
+\end{proof}
+		\item 	Suppose not, that is $\frac{\partial \x^*}{\partial p} \le \0_n$, then $\frac{\partial y^*}{\partial p} \xlongequal{\text{(\ref{eq:explicit expression of y*})}} \nabla_{\x} f(\x^*) \frac{\partial x^*}{\partial p}$ and the assumption that $\nabla_{\x} f(\x^*) \gg \0_n^T$ implies $\frac{\partial y^*}{\partial p} \le 0$, contradictory to (a). Hence, the claim is correct.
+		\item From (\ref{eq:FOC for profixt max}) we know
+\begin{eqnarray*}
+&&		p \frac{\partial }{\partial x_i} \nabla f(\x^*) \cdot \frac{\partial \x^*}{\partial w_j} = \delta_{ij}, i,j \in [n], \\
+& \Leftrightarrow & p J(f)(\x^*) = p \left[\frac{\partial }{\partial x_1}, \ldots, \frac{\partial }{\partial x_n}\right] \nabla f(\x^*) \cdot \frac{\partial \x^*}{\partial w_j} = \e_j^T,j\in [n], \\
+& \Leftrightarrow & p J(f)(\x^*) \left[ \frac{\partial \x^*}{\partial w_1},\ldots,\frac{\partial \x^*}{\partial w_n} \right]= \bbI_n \Leftrightarrow  \left[ \frac{\partial \x^*}{\partial w_1},\ldots,\frac{\partial \x^*}{\partial w_n} \right]= \frac{ \left[J(f)(\x^*)\right]^{-1}}p,
+\end{eqnarray*}
+where $\e_j \in \Reals^n$ represents column vector with $^{th}$ coordinate $1$ and the others $0$. Since "the inverse of a ND matrix is also ND", $\left[ \frac{\partial \x^*}{\partial w_1},\ldots,\frac{\partial \x^*}{\partial w_n} \right] \prec \0_{n \times n}$ and hence diagonal element $\frac{\partial x^*_i}{\partial w_i} <0,\forall i\in [n]$.
+	\end{enumerate}
+\end{ans}
+
+\section{HW6}
+\begin{prob}[3.55]
+	A utility produces electricity to meet the demands of a city. The price it can charge for electricity is fixed and it must meet all demand at that price. It turns out that the amount of electricity demanded is always the same over every 24-hour period, but demand differs from day (6:00 A.M. to 6:00 P.M.) to night (6:00 P.M. to 6:00 A.M.). During the day, 4 units are demanded, whereas during the night only 3 units are demanded. Total output for each 24-hour period is thus always equal to 7 units. The utility produces electricity according to the production function
+$$y_i = (KF_i)^{\frac12 }, i = \text{day, night},$$
+where K is the size of the generatin g plant, and $F_i$ is tons of fuel. The firm must build a single plant; it cannot change plant size from day to night. If a unit of plant size costs $w_k$ per 24-hour period and a ton of fuel costs $w_f$ , what size plant will the utility build?
+\end{prob}
+
+\begin{ans}[3.55]
+	Aki suggests 
+\end{ans}
+
+\begin{prob}[4.2] Suppose that preferences are homothetic but not identical. Will market demand necessarily be independent of the distribution of income?
+\end{prob}
+\begin{ans}[4.2] With $\x^M (y) =y \x^M (1)$, for two individuals, we have $\x_1^M (\alpha y) + \x_2^M (\beta y) = y \left[\alpha \x_1^M (1)  + \beta \x_2^M (1) \right]$.
+\end{ans}
+\begin{prob}[4.3] Show that if $q$ is a normal good for every consumer, the market demand for $q$ will be negatively sloped with respect to its own price.
+\end{prob}
+\begin{ans}[4.3] Suppose $q$ corresponds to price $p$. Market demand is $Q = \sum_{j=1}^n q^j(p, y^i)$, from Slutsky's equation, we know 
+$
+	\frac{\partial q^i(p, y)}{\partial p} \le 0$ due to the fact that $	\frac{\partial \left( q^i \right)^H (p, y)}{\partial p} \le 0$ and that $ -q^i(p,y)	\frac{\partial q^i(p, y)}{\partial y} \le 0$.
+	
+	As a result, $	\frac{\partial Q (p, y)}{\partial p } \le 0$.
+	
+\end{ans}
+
+\begin{prob}[Q3]
+	An industry has the demand curve $D(p) = A- p$. Each of a very large number of potential firms has the same cost function in the long run as in the short run, and it is
+\begin{equation} c(q) = \left\{ \begin{array}{cc} q+q^2 +9, & \text{ if }q >0; \\ 0, & \text{ if } q=0,
+\end{array} \right.
+\end{equation}
+\begin{enumerate}[(a)]
+	\item For $A = 28$, find the long-run competitive equilibrium price, output per operating firm, and number of operating firms.
+	\item Now the demand curve shifts up in the sense that $A$ increases to $67$. In the short run, the number of firms is fixed at the number you found in (a). Find the new short-run equilibrium price and per-firm output.
+	\item Now find the new long-run equilibrium for $A = 67$.
+\end{enumerate}
+
+\end{prob}
+\begin{ans}[Q3] \begin{enumerate}[(a)]
+		\item For market price $p$, each firm's profit is 
+		$$\pi (p)  = \max_{0 \le q \le A - p} \left[pq - \left(q^2+q+9\right)\right]  = \left\{
+		\begin{array}{cc} \frac{(p - 1)^2}4 - 9 , & p \le \frac{2A + 1}{3}; \\ (A-p) (2p +1 - A) - 9, & p >\frac{2A+ 1}{3}
+		\end{array}
+		\right. $$ with output per operating firm $q^* = \frac{p-1}2$ or $q^* =A-p $, respectively. In long run equilibrium 
+		\begin{equation}\left\{ \begin{array}{cc}
+		J_a \cdot \frac{p_a - 1 }{2}, & p_a \ge \frac{2A+1}3; \\  J_a \cdot [(A-p) (2p+ 1 - A) - 9], & p_a >\frac{2A+ 1}{3}
+		\end{array} \right.  = J_a q^*(p_a)= D_a (p_a) = A -p_a.
+		\end{equation}
+		
+		In addition, we actually has $\pi(p_a) = 0$ in long run.
+		\begin{itemize}
+			\item In case $p_a \le \frac{ 2A +1 }{3}$, $p_a = 7$ (thus we need $A \ge 10$) and $J_a = 7$.
+			\item In case, $p_a > \frac{2A+1}3$, $p_a = 6 \sqrt{2} - 1$ (thus we need $A < 9 \sqrt2 - 2$).
+		\end{itemize}
+Thus $J_a = 7, p_a = 7$.
+\begin{rem}
+	A professional solution: price equals average cost $p_a = ac(q_a) \doteq 1  + q_a + \frac9{q_a}$; supply equals demand $J_a q_a = D(p_a) = A_a-p_a$; minimizing $ac(q_a) =  1  + q_a + \frac9{q_a}$ (FOC).
+	As a result $ $
+\end{rem}
+		\item $ J_a \cdot \frac{p_b - 1 }{2}   = J_a q^*(p_b) = D_b\left( p_ b \right) = 67 - p_b$ where first equation is due to the fact that the price equals marignal cost $p_b = 1+2q_b$.
+		
+		$p_b = \frac{47}3, q^*\left( p_b \right) = \frac{22}3$.
+		\item $p_c = 7, J_c = 20 $.
+	\end{enumerate}
+\end{ans}
+
+\begin{prob}[4.7 (a,b)] Technology for producing $q$ gives rise to the cost function $c(q) = aq+bq^2$. The market demand for $q$ is $p = \alpha - \beta q$(, that is, $D(p) = \frac{\alpha - p}{\beta}$).
+	\begin{enumerate}[(a)]
+		\item If $a>0,b > 0$ and there are $J $ firms in the industry, what is the short-run equilibrium market price and the output of a representative firm?
+		\item If $a>0, b > 0$, what is the long-run equilibrium market price and number of firms? Explain.
+	\end{enumerate}
+\end{prob}
+\begin{ans}[4.7 (a,b)] \begin{enumerate}[(a)]
+		\item Output of each operating firm is $q^*(p) = \frac{p - a }{2 b }$ with profit $\pi(p) = \frac{(p-a)^2}{ 4b } $. Short run balance is 
+		\begin{equation} J\cdot \frac{p_a - a }{2 b } = J_a q^*(p_a) = D(p_a) = \frac{\alpha - p_a}{\beta} , p_a = \frac{\alpha J\beta + 2 \alpha b}{\beta J + 2 b}.
+			\end{equation}
+	
+		
+		\begin{rem}
+			Professional solution: price equals  marginal cost + supply equals demand. In addition to the solution itself, one should discuss two cases
+			\begin{itemize}
+				\item $
+				\alpha > a $, just the above. 
+				\item $\alpha \le a$, $q^* =0$ and price $p  \ge \alpha $.
+			\end{itemize}
+		\end{rem}
+		\item In addition to 
+		\begin{equation}
+		J_b \cdot \frac{p_a - a }{2 b } = J_b q^*(p_b) = D(p_b ) = \frac{\alpha - p_b }{\beta}, \label{eq:Jb 4.7 long run's short run character}
+		\end{equation}
+		we have long-run equilibrium
+		\begin{equation}
+		\pi(p) = \frac{(p_b-a)^2}{ 4b } = 0,\xLongrightarrow{\text{(\ref{eq:Jb 4.7 long run's short run character})}} J_b \cdot 0 =  \frac{\alpha - a }{\beta},
+		\end{equation}
+		which means $\left( q_b, p_b , Q_b, J_b  \right) = \left( 0, a, \frac{\alpha - a }{\beta}, \infty\right)$, "the interpretation of this is that each of an infinite number of firms produces an infinitesimal amount which together add up to the positive amount $\frac{\alpha - a }{\beta }$" (from professor).
+		\begin{rem}
+			A professional solution: price equals average cost function $ p^* =ac(q^*) = a + bq^*$; supply equals demand $Jq = \frac{\alpha - p}\beta$；  minimizing $ac(q^*)$? Here I need to say: I am maximizing the profit $ p  = a+2bq$.
+			
+			As a result $J = \infty, q^*= 0, p^* = a, Q^* = \frac{\alpha -a }{\beta}$.
+		\end{rem}
+	\end{enumerate}
+\end{ans}
+
+\begin{prob}[6]
+	A monopoly has cost function $c(q) = 6q$. The output $q$ is consumed only by consumers $a,b$. Their demand functions for $q$ are $D_a(p) = 10 - p$ and $D_b(p) = 20-p$, respectively.
+	\begin{enumerate}[(a)]
+		\item Find the industry demand function $D(p)$; the inverse demand function $P(y)$; the revenue function $R(y)$; and the marginal revenue function $R'(y)$.
+		\item Find the monopoly output $Q^M$ and price $p^M$.
+		\item Suppose now that the firm can practice price discrimination, i.e. charge a price $p_a$ to consumer $a$ and a price $p_b$ to consumer $b$. Find the firm's optimal prices, $p_a^*, p_b^*$, and quantities $q_a^*,q_b^*$. Who is better off, and who is worse off, relative to the uniform-price solution in (a)?
+	\end{enumerate} 
+\end{prob}
+\begin{ans}
+	\begin{enumerate}[(a)] 
+		\item The industry demand function $D(p) = \left\{ \begin{array}{cc} 30 - 2p, & p \le 10; \\   20 - p, & 10 < p \le 20; \\0 ,  & p > 20.
+		\end{array} \right.$
+		Inverse demand function $P(Q) = \ldots.$
+		
+		Revenue function is $R(Q ) = P(Q)Q$ and the marginal revenue function is $ $.
+		
+		\item 
+		\begin{eqnarray*} Q^M & \in &  \arg \max_Q \left[ P(Q)Q - c(Q)\right] =  \left\{ \begin{array}{cc} 20 - 2Q , & Q \le 10; \\   15 - Q , & 10 < Q \le 20; \\0 ,  & Q > 20.
+		\end{array} \right. - 6  \\
+	& = &  \left\{ \begin{array}{cc} 14 - 2Q , & Q \le 10; \\   9 - Q , & 10 < Q \le 20; \\  -6 ,  & Q > 20.
+		\end{array} \right. 
+	\end{eqnarray*}
+$Q^M = 7$; $Q^M=9$ contradicts to the fact $10 < Q^M < 20$.
+		\item Both the monopoly (more profit) and onsumer $a$ (lower price) are better off. Consumer $b$ has not change (in price and hence its demand).
+	\end{enumerate}
+\end{ans}
+
+\section{HW7}
+
+\begin{prob}[1]
+\end{prob}
+\begin{ans}[1]	\begin{enumerate}[(a)]
+		\item \ul{Find the function $u$.}
+		
+		As for $\dps \max_{pq+x \le y}U=u(q,x) =  u(q)+ x$, we obtain Marshallian demand function \begin{equation}q^M = D(p ) =\left\{ \begin{array}{cc}
+	10-p, 0\le p \le 10; \\ 0, p >10.	\end{array} \right. \in [0,10]\label{eq:Marshallian demand q}
+	\end{equation} and $x^M = x(p,1,y)$.  Notice (one can verify by FOC of Lagrangian)
+		$$\frac{p}{1} = \frac{\frac{\partial u }{\partial q} \left( q^M\right)}{\frac{\partial u }{\partial x} \left( x^M\right)} = \frac{\frac{\partial u }{\partial q} \left( q^M\right)}{1} = \frac{\partial u }{\partial q} \left( q^M\right) , $$
+		and hence $10 - q^M= D^{-1}\left( q^M\right) = p = \frac{\partial u }{\partial q} \left( q^M\right) $ which implies $u(q)\xlongequal{u(0) = 0} 10q -\frac{q^2}2,  q\in (0,10)$ or in complete form
+		\begin{equation}
+		u(q) = \left\{ \begin{array}{cc} 10 q - \frac{q^2}2, & q \in [0,10);\\ 50,  & q \ge 10. \label{eq:Q1 utility function}
+		\end{array} \right.
+		\end{equation}
+		\item \ul{ Find the firm's profit-maximizing two-part tariff, $(f,p)$.} 
+		
+%		First thing first, the indrect utility function from UMP is
+%			\begin{eqnarray}
+%			&& v(p,y) =  \max_{pq+x \le y }\left[ u(q) + x\right] \nonumber \\
+%			& = &   y+ \max_{q\ge 0 }\left[ u(q) -pq\right]   \xlongequal[y \text{ large enough}]{\text{(\ref{eq:Q1 utility function})}}   y+ \max_{0 \le q \le 10 }\left[ u(q) -pq\right]  \nonumber \\
+%			& \xlongequal{\text{(\ref{eq:Q1 utility function})}} & y+ \max_{0 \le q \le 10 }\left[ (10 -p)q - \frac{q^2 }2\right] = \left\{ \begin{array}{cc}
+%				y+ \frac{(10-p)^2}2, & 0 \le p \le 10; \\ y, & p > 10. \label{eq:Q1 indirect utility}
+%			\end{array}\right.
+%		\\
+%			&\Rightarrow & q^M (p,y) = \left\{ \begin{array}{cc}
+%\frac{(10-p)^2}2, & 0 \le p \le 10; \\ 0, & p > 10.
+%			\end{array}\right., \\
+%		&& x^M (p,y) = y - pq^M (p,y)= y - \left\{ \begin{array}{cc}
+%			50p, & 0 \le p \le 50; \\ (100-p)p, & 50<p<100;\\ 0, & p \ge 100.
+%		\end{array}\right. 
+%		\end{eqnarray} 
+		\begin{enumerate}[i]
+			\item Our first step is to consider the compensating variation part of the problem to get new price $p$ after the tariff $f$ (suggested by Aki):
+		\begin{equation}
+			u(q) + x -f = u(0) + y \xLongrightarrow{y = pq-x} f = u(q) - u(0) - pq.\label{eq:tariff}
+		\end{equation}
+%			
+%			Our claim is 
+%			\begin{mdframed}
+%				\begin{claim} As a function of tariff $f$ and initial price $p$,
+%					\begin{itemize}
+%						\item In case $p > 10$, $p^{new} = 10 - \sqrt{2f}$ where we require $f \le 50$.
+%						\item In case $0 \le p \le 10$, $ p^{new } = 10 - \sqrt{ (10-p)^2+2f}$ where we require $f \le \frac{p(20-p)}2$.
+%					\end{itemize}
+%	\label{claim:Q1 new price}
+%			\end{claim}
+%			\end{mdframed}
+%\begin{proof}
+%		Aki suggests this as a problem of compensating variation where $CV  = -f $ is the change in cosumer's income in (4.23) of textbook (page 180). Then new problem is $\dps \max_{p^{new}q+x \le y -f }\left[ u(q) + x\right] $.
+%	
+%			and (4.23) implies $v\left(p^{new}, y -f \right)= v \left(p, y \right)  $ and according to (\ref{eq:Q1 indirect utility}) (and $f>0$), we can discuss several cases:
+%			\begin{enumerate}
+%				\item $p^{new} \ge 10$, impossible since (\ref{eq:Q1 indirect utility}) implies $y -f  = y$ or $y -f = y+ \frac{(10-p)^2}2$;
+%				\item $0 \le p^{new} < 10 \le p$, then (\ref{eq:Q1 indirect utility}) implies $ y - f+ \frac{\left(10-p^{new}\right)^2}2=  y\Rightarrow p^{new} = 10 - \sqrt{2f}$ where we require $f \le 50$;
+%				\item$0 \le p,p^{new} < 10 $, then (\ref{eq:Q1 indirect utility}) implies $ y - f+ \frac{\left(10-p^{new}\right)^2}2=  y + \frac{\left(10-p\right)^2}2\Rightarrow p^{new} = 10 - \sqrt{2f} \Rightarrow p^{new}  = 10 - \sqrt{(10-p)^2 + 2f}$ where we require $f \le \frac{p(20-p)}2$.
+%			\end{enumerate}
+%	Here we can conclude claim \ref{claim:Q1 new price}.
+%	\end{proof}
+	\item Our second step is to maximize the profit of the company: (notice revenue function is $ f + pq$):
+	$$\max_{q \ge 0} \left[ f + pq - c(q)\right] \xlongequal{\text{(\ref{eq:tariff})}} \max_{q \ge 0}\left[ u(q) - u(0)  - 6q\right] \xlongequal{(\ref{eq:Q1 utility function})} \max_{0 \le q \le 10} \left[4 q - \frac{q^2}2 \right] ,$$
+hence $f^* \xlongequal{\text{(\ref{eq:tariff})} } u(4) - (10-4)\cdot 4 = \left(10\cdot 4 - \frac{4^2}2\right) - 6 \cdot 4 = 8$, $p^* = 10 -4 = 6$ with $q^* =4$.
+
+%\begin{eqnarray*}
+%&&	\max_{q \ge 0} [\pi (q) - c(q)] \xlongequal{\text{(\ref{eq:Marshallian demand q})}} 	\max_{0 \le q \le 10 - p^{new}(p,f)} [p^{new}(p,f)q - 6q] \\ & \xlongequal{\text{claim \ref{claim:Q1 new price}}} &  \left\{ \begin{array}{cc}\dps \max_{0 \le q \le \sqrt{(10-p)^2 + 2f}}\left[ 6q +
+%	q\sqrt{ (10-p)^2+2f}\right], & 0 \le p \le 10; \\ \dps  \max_{0 \le q \le \sqrt{2f}}(6q + q \sqrt{2f}), & p >10.
+%\end{array} 
+%\right. \\
+%& = &  2f+  \left\{ \begin{array}{cc}6 \sqrt{ (10-p)^2+2f} + (10-p)^2 , & 0 \le p \le 10; \\ 6 \sqrt{2f} , & p >10.
+%\end{array} 
+%\right. 
+%\end{eqnarray*}
+%\begin{itemize}
+%	\item In case $p>10$, max profit is $2\cdot 50 + 6 \cdot \sqrt{2 \cdot 50} = 160$ when $f = 50$.
+%	\item In case $0 \le p \le 10$, max profit is 160 as well when $f = \frac{p(20-p)}2$.
+%\end{itemize}
+					\end{enumerate}
+				
+				To conclude, profit-maximizing two-part tariff is $(f^*,p^*) = (8,6)$.
+	\end{enumerate}
+\end{ans}
+
+\begin{prob}[2]
+	
+
+\end{prob}
+\begin{ans}[2]  
+	
+\begin{enumerate}[(a)]
+	\item
+\ul{Find an equation for the part of the contract curve that is in the interior of the Edgeworth box, and graph the entire contract curve.}
+
+Pareto optimality implies $MRS^A_{12} = MRS^B_{12}$:
+$$\left(\frac{ \partial u^A / \partial x_1}{ \partial u^{A } / \partial x_2}\right)\left(x_1^{A,PO},x_2^{A,PO}\right) = \left(\frac{ \partial u^B / \partial x_1}{ \partial u^B / \partial x_2}\right) \left( 3 - x_1^{A,PO}, 2 - x_2^{A,PO}\right)$$ $ \xLongrightarrow{\text{"interior of Edgeworth box"}}$ $x_1^{A,PO} = \frac32, x_2^{A,PO } \in (0,2)$.
+
+Speaking of entire contract curve, just notice $\left(x_1^A,x_2^A , x_1^B,x_2^B\right) = (3,2,0,0),(0,0,3,2)$ are on the contract curve as well and the fact that contract curve is continuous, \textcolor{red}{we draw the following graph}.
+\newpage 
+	\item \ul{Find the Walrasian equilibrium allocation} $\x$ \ul{and price vector $(p_1,1)$ (good 2 is the numeraire).}
+	
+As for UMPs
+$$
+\max_{p_1 x_1 +x_2 \le 2p_1} \left(\ln x_1 + x_2\right), \max_{p_1 x_1 +x_2 \le p_1  +2} \left(\ln x_1 + x_2 \right),
+$$
+Marshallian demand functions are \begin{eqnarray*}
+	x_1^{A,M} \left( p_1, p_1 e_1^A + e_2^A \right) = \frac1{p_1}&,& x_2^{A,M} \left( p_1, p_1 e_1^A + e_2^A \right)= 2 p_1 -1;\\
+	x_1^{B,M} \left( p_1, p_1 e_1^B + e_2^B \right) = \frac1{p_1}&,& x_2^{B,M} \left( p_1, p_1 e_1^B + e_2^B \right) = p_1 + 1.
+\end{eqnarray*} According to definition 5.5, Walrasian equilibrium requires 
+\begin{eqnarray*}
+&&\frac2{p_1^* } = x_1^{A,M} \left(p_1^* , p_1^* e_1^A + e_2^A \right)+ x_1^{B,M} \left(p_1^*, p_1^* e_1^B + e_2^B \right) = e_1^A + e_1^B= 3,  \\
+&& 3p_1^* = x_2^{A,M} \left(p_1^*, p_1^* e_1^A + e_2^A \right)+ x_2^{B,M} \left(p_1^*, p_1^* e_1^B + e_2^B \right) = e_2^A + e_2^B= 2; \\ 
+& \Rightarrow & p_1^* = \frac23 \text{ with WEA }
+\begin{bmatrix} x_1^{A,M} \left( p_1^*, p_1^* e_1^A + e_2^A \right)  \\ x_2^{A,M} \left( p_1^*, p_1^* e_1^A + e_2^A \right)  \\ x_1^{B,M} \left( p_1^*, p_1^* e_1^B + e_2^B \right)  \\ x_2^{B,M} \left( p_1^*, p_1^* e_1^B + e_2^B \right) \end{bmatrix}   = \begin{bmatrix}
+3/2 \\ 1/3 \\ 3/2 \\ 5/3
+\end{bmatrix} .
+\end{eqnarray*}
+
+\end{enumerate}	
+\end{ans}
+
+\begin{prob}[3, JR5.11] Consider a two-consumer, two-good exchange economy. Utility functions and endowments are $u^1(x_1, x_2) = (x_1x_2)^2$ and $\e^1 = (18, 4)$,
+$	u^2(x_1, x_2) = \ln(x_1) + 2 \ln(x_2)$ and $\e^2 = (3, 6)$.
+\begin{enumerate}[(a)]
+	\item  Characterise the set of Pareto-efficient allocations as completely as possible. 
+	\item  Characterise the core of this economy.
+\item Find a Walrasian equilibrium and compute the WEA.
+\item Verify that the WEA you found in part (c) is in the core.
+	\end{enumerate}
+\end{prob}
+\begin{ans}[3, JR5.11]
+	\begin{enumerate}[(a)]
+		\item  \ul{Characterise the set of Pareto-efficient allocations as completely as possible.}
+		
+		Pareto optimality implies 
+		$$ \frac{x_2^{1,PO}}{x_1^{1,PO}}= \left(\frac{ \partial u^1 / \partial x_1}{ \partial u^1 / \partial x_2}\right)\left(x_1^{1,PO} ,x_2^{1,PO} \right) = \left(\frac{ \partial u^2 / \partial x_1}{ \partial u^2 / \partial x_2}\right) \left( 21  - x_1^{1,PO}, 10 - x_2^{1,PO} \right) = \frac{10 - x_2^{1,PO} }{2\left(21 - x_1^{1,PO}\right)} ,$$
+		hence $x_1^{1,PO} = \frac{42 x_2^{1,PO} }{10 + x_2^{1,PO} }$ or alternatively, $x_2^{1,PO} = \frac{10 x_1^{1,PO} }{42 - x_1^{1,PO} }$.
+		\item  \ul{Characterise the core of this economy.}
+		
+Notice $u^1\left(\e^1\right) = (18\cdot 4)^2  $ , $u^2\left(\e^2 \right) = \ln 3 +  2 \ln 6 =  \ln \left(2^2 \cdot 3^3\right)$. (a) implies 
+\begin{eqnarray*}
+	u^1 \left( x_1^{1,PO}, x_2^{1,PO} \right) &= &\left[ \frac{10 \left(x_1^{1,PO} \right)^2 }{42 - x_1^{1,PO} }\right]^2 \ge u^1\left( \e^1 \right)  = (18\cdot 4)^2, \\
+	 u^2 \left( x_1^{2,PO}, x_2^{2,PO} \right) & = & 	 u^2 \left( 21 - x_1^{1,PO},  10  -x_2^{1,PO} \right)\\
+	 &= & \ln \left[ 400 \frac{\left( 21 - x_1^{1,PO} \right)^3}{ \left( 42 -  x_1^{1,PO}\right)^2 }\right] \ge u^2\left( \e^2 \right) = \ln \left(2^2 \cdot 3^3\right),
+\end{eqnarray*}
+or equivalently simplified by denoting $x_1^{1,PO}$ by $x$: \begin{equation}
+\frac{x^2}{ 42 -  x } \ge \frac{36}5, \frac{(21 - x)^3}{ (42 - x )^2}  \ge\frac{3^3}{10^2}, (x\ge 0).
+	\label{eq:Q2 chara of core}
+\end{equation} 
+		\item \ul{Find a Walrasian equilibrium and compute the WEA.}
+		
+		
+As for UMPs
+$$
+\max_{\p \cdot \x  \le 18 p_1  +4p_2 } (x_1 x_2 )^2 , \max_{\p \cdot \x  \le 3 p_1  +6p_2}  \ln \left( x_1 x_2^2 	 \right),
+$$
+Marshallian demand functions are
+\begin{eqnarray*}
+	x_1^{1,M} \left(\p, \p \cdot  \e^1 \right) = 9 + \frac{2p_2}{p_1 } & ,  & x_2^{1,M} \left(\p, \p \cdot  \e^1 \right) = 2 + \frac{9p_1}{p_2}; \\	
+		x_1^{2,M} \left(\p, \p \cdot  \e^2 \right) = 1 + \frac{2p_2}{p_1 } & ,  & x_2^{2,M} \left(\p, \p \cdot  \e^2 \right) = 4 + \frac{2p_1}{p_2}.
+	\end{eqnarray*}
+		According to definition 5.5, 
+\begin{eqnarray*}10 + \frac{4p_2^* }{p_1^* } =  	x_1^{1,M} \left(\p^* , \p^* \cdot  \e^1 \right) + 	x_1^{2,M} \left(\p^*, \p^* \cdot  \e^2 \right) = e_1^1 +e_1^2 = 21, \\
+	6 + \frac{11p_1^*}{p_2^*} = x_2^{1,M} \left(\p^* , \p^* \cdot  \e^1 \right) + 	x_2^{2,M} \left(\p^*, \p^* \cdot  \e^2 \right) = e_2^1 + e_2^2 = 10,
+\end{eqnarray*}
+Hence  $\frac{p_1^*}{p_2^*} = \frac4{11}$ and corresponding WEA is 
+\begin{eqnarray*}
+	x_1^{1,M} \left(\p^*, \p^* \cdot  \e^1 \right) = \frac{29}{2} & ,  & x_2^{1,M} \left(\p^*, \p^* \cdot  \e^1 \right) = \frac{58}{11}; \\	
+		x_1^{2,M} \left(\p^* , \p^* \cdot  \e^2 \right) = \frac{13}2 & ,  & x_2^{2,M} \left(\p^* , \p^* \cdot  \e^2 \right) =  \frac{52}{11 }.
+\end{eqnarray*}
+		\item \ul{Verify that the WEA you found in part (c) is in the core.}
+		
+		It suffices to verify $	x_1^{1,M} \left(\p^*, \p^* \cdot  \e^1 \right) = \frac{29}{2}$ in (c) satisfies (\ref{eq:Q2 chara of core}). This is very easy:
+		$$\frac{\left(\frac{29}2\right)^2}{55/2} > 7.6454 > 7.2 = \frac{36}5 ;$$
+		and 
+		$$
+		\frac{\left(21 -  \frac{29}2 \right)^3}{ \left(42 -  \frac{29}2 \right)^2} = \frac{13^3}{55 ^2} > 0.726 > 0.27 = \frac{3^3}{10^2}.
+		$$
+	\end{enumerate}
+\end{ans}
+
+\begin{prob}[4, JR5.15]There are 100 units of $x_1$ and 100 units of $x_2$. Consumers 1 and 2 are each endowed with 50 units of each good. Consumer 1 says, ‘I love $x_1$, but I can take or leave $x_2$’. Consumer 2 says, ‘I love $x_2$, but I can take or leave $x_1$’.
+\begin{enumerate}[(a)]
+	\item Draw an Edgeworth box for these traders and sketch their preferences. 
+\item  Identify the core of this economy. \item  Find all Walrasian equilibria for this economy.
+\end{enumerate}
+\end{prob}
+\begin{ans}[4, JR5.15]
+	
+	\begin{enumerate}[(a)]
+		\item \ul{Draw an Edgeworth box for these traders and sketch their preferences.}
+		
+		The contract curve is just a singular point $\left(x_1^1,x_2^1,x_1^2, x_2^2\right) = \left( 100, 0, 0, 100\right)$.
+		
+		\textcolor{red}{We draw the following graph.}
+		\newpage 
+		\item  \ul{Identify the core of this economy.} 
+		
+				The core is just a point $\left(x_1^1,x_2^1,x_1^2, x_2^2\right) = \left( 100, 0, 0, 100\right)$ since the core is a subset of contract curve and is nonempty.
+		\item  \ul{Find all Walrasian equilibria for this economy.}
+		
+ Walrasian eqilibra is $\frac{p_1^*}{p_2^*} =1$ with WEA just a point $\left(x_1^1,x_2^1,x_1^2, x_2^2\right) = \left( 100, 0, 0, 100\right)$ since WEA is a subset of contract curve and is nonempty.
+	\end{enumerate}
+\end{ans}
+
+\begin{prob}[5]
+\end{prob}
+\begin{ans}[5]
+	\begin{enumerate}[(a)]
+		\item \ul{Jane does not want to operate the company herself. Instead, she wants to tell a manager a rule for choosing $y$ without revealing any private details about herself, such as her utility function. Can she do this and still maximize her lifetime utility? If so, what rule should she tell her manager? Prove your answer.}
+		
+		Notice we can iteratively simplify the contraint of the problem into a UMP:
+		$$ \max_{  }u(\x) ~ s.t. ~\sum_{t=1}^T  \frac{y_{t- 1}}{(1+r)^t } \ge \sum_{t=1}^T \frac{p_{t- 1} x_{t- 1}}{(1+r)^t}, $$
+		and the rule is to tell manager to maximize each $y_t$ as possible as he can.
+		\item  \ul{Let $n = 1$ and $T = 2$. Derive a Slutsky-Hicks expression for $\frac{\partial x_1^*}{\partial r}$ in terms of the first-year savings $s_1$. Explain the intuition.}
+		
+		As for \begin{eqnarray*}
+		&\max & u(\x)  \\
+		& s.t.&s_1 = y_1 - p_1 x_1,s_2 = (1+r) s_1 + y_2 -p_2 x_2   \ge 0, \y \in \Y. \\
+		&\Leftrightarrow \max &  u(\x)  \\
+		& s.t.& (1+r) p_1 x_1 + p_2 x_2\le  (1+r) y_1 + y_2, \y \in \Y .
+		\end{eqnarray*}
+	\end{enumerate}
+\end{ans}
+
+
+\begin{prob}[6]
+\end{prob}
+\begin{ans}[6] \begin{enumerate}[(a)]
+		\item \ul{Prove the co-monotonicity property: in any interior Pareto e¢ cient alloca- tion, each consumer obtains more of the good in states in which the aggregate endowment is greater.}
+		
+		Pareto optimality implies $MRS_{st}^i = MRS_{st}^j,\forall i,j \in [I],s< t \in [S] $:
+\begin{equation}\left(\frac{\partial U^i / \partial  x_s}{\partial U^i / \partial  x_t}\right)\left(\x^i \right) = 		\left(\frac{\partial U^j / \partial  x_s}{\partial U^j / \partial  x_t}\right) \left(\x^j\right) \Rightarrow
+\frac{  u_i' \left(x_s^i\right) }{  u_i' \left(x_t^i \right)} = 	\frac{ u_j' \left(x_s^j\right) }{ u_j' \left(x_t^j  \right) 	}.
+ \label{eq:generalized omega example ij}
+\end{equation}
+%
+%For subset of persons $\cK \subset [I]$, define $\omega_s (\cK)\doteq \sum_{k \in \cK}x_s^k$ as a generalized definition of endowment at state $s$:
+%\begin{itemize}
+%	\item 
+% as a good example of the definition, above becomes 
+% \begin{equation}	\frac{  u_i' \left(x_s^i\right) }{  u_i' \left(x_t^i \right)} =  \frac{ u_j' \left(  \omega_s \left(   \{i,j\}\right) - x_s^i\right) }{ u_j' \left( \omega_t \left(   \{i,j\}\right)- x_t^i \right) 	},
+% \label{eq:generalized omega example ij}
+% \end{equation} (we fix any other person $k$'s $x_s^k, x_t^k$). 
+% \item In the question itself, $\omega_s = \omega_s ([I])$.
+%\end{itemize}
+It suffices to show
+\begin{mdframed}
+	\begin{claim}$x_s^i > x_t^i $ for $s<t \in [S]$.
+\end{claim}
+\end{mdframed}
+\begin{proof}
+We prove this by contradiction. Suppose not, that is,
+% by defining $\cK^*_{st} \doteq \left\{ k: x_s^k > x_t^k\right\}$ and we have the fact $\omega_s \left(  \cK_{st}^* \right)  \ge \omega_t \left(   \cK_{st}^* \right) $; our assumption implies $\cK^*_{st} \subsetneq [I]$. 
+%
+%
+%For any $i \in [I] \setminus \cK^{*}_{st}$, 
+$$ x_s^i \le x_t^i\xLongrightarrow[ u_i'' <0]{u_i'>0} \frac{  u_i'\left(x_s^i\right) }{  u_i' \left(x^i_t \right)} \ge 1 \xLongrightarrow{\text{(\ref{eq:generalized omega example ij})}}  \frac{ u_j' \left(   x_s^j\right) }{ u_j' \left(  x_t^j \right) 	} \ge 1 \xLongrightarrow[ u_j'' <0]{u_j'>0} x_s^j \le  x_t^j, $$ 
+for all $j \in [I]$. Then $\bar \omega_s  = \sum_{j =1 }^I x_s^j \le \bar \omega_t  = \sum_{j =1 }^I x_t^j $. A contradiction!
+\end{proof}
+
+%	\begin{rem} Aki demonstrates (a) with case $I=2$, and then above reduces into
+%	$$
+%	\frac{  u_1'\left(x_s^1\right) }{  u_1' \left(x^1_t \right)} = 	\frac{  u_2 '\left(x_s^2\right) }{  u_2'\left(x^2_t \right)} = \frac{ u_2'\left(\omega_s - x_s^1\right) }{  u_2' \left(\omega_t  - x^1_t \right)}, (\omega_s > \omega_t)
+%	$$
+%	and it suffices to show 
+%	\begin{mdframed}
+%		\begin{claim}$x_s^1 > x_t^1 $ for $s<t \in [S]$.
+%		\end{claim}
+%	\end{mdframed}
+%	\begin{proof}
+%		We prove this by contradiction. Suppose not, that is $x_s^1 \le x_t^1$ $\xLongrightarrow[ u_1'' <0]{u_1'>0}$ $\frac{  u_1'\left(x_s^1\right) }{  u_1' \left(x^1_t \right)} \ge 1$ and $\omega_s - x_s^1 > \omega_t - x_t^1$   $\xLongrightarrow[ u_2'' <0]{u_2'>0}$ $ \frac{ u_2'\left(\omega_s - x_s^1\right) }{  u_2' \left(\omega_t  - x^1_t \right)} < 1$. Jointly speaking,
+%		$$
+%		1 \le \frac{  u_1'\left(x_s^1\right) }{  u_1' \left(x^1_t \right)} = 	\frac{  u_2 '\left(x_s^2\right) }{  u_2'\left(x^2_t \right)} = \frac{ u_2'\left(\omega_s - x_s^1\right) }{  u_2' \left(\omega_t  - x^1_t \right)} <1, (\omega_s > \omega_t)
+%		$$
+%		a contradiction.
+%	\end{proof}
+%\end{rem}
+
+		\item \ul{For $I = S = 2$; what does this result imply about the location of the contract curve in the Edgeworth box? Graph it.}
+	
+	\end{enumerate}
+\end{ans}
+
+
+\begin{prob}[7]
+\end{prob}
+\begin{ans}[7]
+	\begin{enumerate}
+		\item  \ul{What is the Nash equilibrium $\left( q_1^* ,q_2^* \right)$ of this game?} 
+		
+		$q_1^* = q_2^* = \frac{p}{5}$.
+		\item \ul{What outputs would maximize total profit?}
+		
+				$q_1^T = q_2^T = \frac{p}{6}$.
+	\end{enumerate}
+\end{ans}
+
+
+\begin{prob}[8]
+\end{prob}
+\begin{ans}[8]
+\begin{enumerate}[(a)]
+	\item  \ul{Find the Nash equilibrium, $\x  = (x_1,x_2)$; of this game.}
+
+$x_	1^* = 0,x_2^* = 4 $.
+	\item  \ul{Show that for any $a > 1$; there exists  $\bar \epsilon > 0$ such that for all $\epsilon \in  (0, \bar \epsilon )$; players 1 and 2 will be made better o§, relative to the equilibrium you just found, if they are forced to increase their contributions above $\x^*$  by $\epsilon$ and $a\epsilon$, respectively.}
+\end{enumerate}
+\end{ans}
+
+
+
+%\begin{thebibliography}{9}
+%\bibitem{jain2005market} Jain, Kamal, Vijay V. Vazirani, and Yinyu Ye. "Market equilibria for homothetic, quasi-concave utilities and economies of scale in production." Proceedings of the sixteenth annual ACM-SIAM symposium on Discrete algorithms. Society for Industrial and Applied Mathematics, 2005.
+%\end{thebibliography}
+
+\end{document}
+
+
